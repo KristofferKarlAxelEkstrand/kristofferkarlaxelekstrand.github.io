@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kristofferkarlaxelekstrand.github.io/sitemap.xml

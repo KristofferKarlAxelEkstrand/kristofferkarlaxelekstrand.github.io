@@ -1,0 +1,158 @@
+const fs = require('fs');
+const path = require('path');
+
+describe('Content Validation', () => {
+	let htmlContent;
+	let doc;
+
+        beforeAll(() => {
+                // Load HTML content
+                const htmlFile = path.resolve(__dirname, '../docs/index.html');
+                htmlContent = fs.readFileSync(htmlFile, 'utf8');
+
+                // Use improved HTML parsing from test utilities
+                doc = testUtils.parseHTML(htmlContent);
+        });	describe('HTML Structure', () => {
+		test('HTML document has proper DOCTYPE', () => {
+			expect(htmlContent).toMatch(/^<!doctype html>/i);
+		});
+
+		test('HTML document has lang attribute', () => {
+			expect(htmlContent).toMatch(/<html[^>]*lang="[^"]*"/i);
+		});
+
+		test('title tag exists and contains expected content', () => {
+			const title = doc.querySelector('title');
+			expect(title).toBeTruthy();
+			expect(title.textContent).toContain('Kristoffer');
+		});
+
+		test('main heading contains correct name', () => {
+			const h1 = doc.querySelector('h1');
+			expect(h1).toBeTruthy();
+			expect(h1.textContent).toContain('Kristoffer');
+		});
+
+		test('main element exists', () => {
+			const main = doc.querySelector('main');
+			expect(main).toBeTruthy();
+		});
+	});
+
+	describe('Link Validation', () => {
+		test('all links have href attributes', () => {
+			const links = doc.querySelectorAll('a');
+
+			links.forEach((link) => {
+				expect(link.href).toBeTruthy();
+				expect(typeof link.href).toBe('string');
+				expect(link.href.length).toBeGreaterThan(0);
+			});
+		});
+
+		test('external links use proper protocols', () => {
+			const links = doc.querySelectorAll('a');
+
+			const externalLinks = links.filter((link) => link.href.startsWith('http://') || link.href.startsWith('https://'));
+
+			externalLinks.forEach((link) => {
+				expect(link.href).toMatch(/^https?:\/\//);
+			});
+		});
+
+		test('internal links are properly formatted', () => {
+			const links = doc.querySelectorAll('a');
+
+			const internalLinks = links.filter((link) => !link.href.startsWith('http://') && !link.href.startsWith('https://'));
+
+			internalLinks.forEach((link) => {
+				// Internal links should start with # or be relative paths
+				expect(link.href.startsWith('#') || link.href.startsWith('./') || link.href.startsWith('../') || !link.href.includes('://')).toBe(true);
+			});
+		});
+
+		test('mailto links are properly formatted', () => {
+			const links = doc.querySelectorAll('a');
+
+			const mailtoLinks = links.filter((link) => link.href.startsWith('mailto:'));
+
+			mailtoLinks.forEach((link) => {
+				expect(link.href).toMatch(/^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/);
+			});
+		});
+	});
+
+	describe('Content Sections', () => {
+		test('projects section exists', () => {
+			expect(htmlContent).toContain('id="projects"');
+		});
+
+		test('sites section exists', () => {
+			expect(htmlContent).toContain('id="sites"');
+		});
+
+		test('work section exists', () => {
+			expect(htmlContent).toContain('id="work"');
+		});
+
+		test('Adventure Kid Waveforms is mentioned', () => {
+			expect(htmlContent).toContain('Adventure Kid Wave Forms');
+		});
+		test('contact information is present', () => {
+			expect(htmlContent).toContain('toffe@kristofferekstrand.se');
+		});
+	});
+
+	describe('Meta Tags', () => {
+		test('viewport meta tag is present', () => {
+			expect(htmlContent).toContain('name="viewport"');
+		});
+
+		test('charset meta tag is present', () => {
+			expect(htmlContent).toContain('charset="utf-8"');
+		});
+
+		test('description meta tag exists', () => {
+			expect(htmlContent).toContain('name="description"');
+		});
+
+		test('author meta tag exists', () => {
+			expect(htmlContent).toContain('name="author"');
+		});
+	});
+
+	describe('Asset References', () => {
+		test('CSS file is referenced', () => {
+			expect(htmlContent).toContain('styles/main.css');
+		});
+
+		test('JavaScript file is referenced', () => {
+			expect(htmlContent).toContain('scripts/app.js');
+		});
+
+		test('Google Fonts are loaded', () => {
+			expect(htmlContent).toContain('fonts.googleapis.com');
+		});
+	});
+
+	describe('Accessibility Basics', () => {
+		test('images have alt attributes (if any exist)', () => {
+			const imgTags = htmlContent.match(/<img[^>]*>/g) || [];
+
+			imgTags.forEach((imgTag) => {
+				// If images exist, they should have alt attributes
+				if (imgTags.length > 0) {
+					expect(imgTag).toContain('alt=');
+				}
+			});
+		});
+
+		test('no empty links', () => {
+			const links = doc.querySelectorAll('a');
+
+			links.forEach((link) => {
+				expect(link.textContent.trim()).not.toBe('');
+			});
+		});
+	});
+});
