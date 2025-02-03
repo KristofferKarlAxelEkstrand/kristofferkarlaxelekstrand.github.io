@@ -1,1 +1,135 @@
-body{font-family:sans-serif;font-size:14px;line-height:1.6;color:#333;background-color:#a36363}/*# sourceMappingURL=main.css.map */
+:root {
+  --margin-v-1: 1rem;
+  --margin-v-1_5: 1.5rem;
+  --margin-v-2: 2rem;
+  --margin-v-2_5: 2.5rem;
+  --margin-v-3: 3rem;
+  --margin-v-3_5: 3.5rem;
+  --margin-v-4: 4rem;
+  --margin-v-4_5: 4.5rem;
+  --margin-h-4: 4rem;
+  --max-pw: 40rem;
+}
+
+body {
+  background-color: #dfdbd5;
+  color: #3a352e;
+  font-family: "Crete Round", serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+body > header {
+  background-color: #b6b6cf;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+body > header > h1 {
+  font-size: 3rem;
+  font-weight: 200;
+  margin: 0;
+}
+body > header > nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body > header > nav > ul > li {
+  display: inline-block;
+  margin-right: 10px;
+}
+body > header > nav > ul > li > a {
+  color: #fff;
+  text-decoration: none;
+}
+body > header > nav > ul > li > a:hover {
+  text-decoration: underline;
+}
+body > header > :first-child {
+  margin-top: 0;
+}
+body > header > :last-child {
+  margin-bottom: 0;
+}
+body > main {
+  margin: 0;
+  padding: 0;
+}
+body > main > header {
+  margin: 2rem 0;
+}
+body > main > header > h2 {
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin: 0 auto;
+  max-width: var(--max-pw);
+}
+body > main > header > p {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin: 0 auto;
+  max-width: var(--max-pw);
+}
+body > main > header > :first-child {
+  margin-top: 0;
+}
+body > main > header > :last-child {
+  margin-bottom: 0;
+}
+body > main > section {
+  margin: var(--margin-v-4) 0;
+}
+body > main > section > h3 {
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 0 auto;
+  max-width: var(--max-pw);
+}
+body > main > section > article {
+  margin: var(--margin-v-2) 0;
+}
+body > main > section > article > h4 {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin: 0 auto;
+  max-width: var(--max-pw);
+}
+body > main > section > article > p {
+  margin: 0 auto;
+  max-width: var(--max-pw);
+}
+body > main > section > article:first-child {
+  margin-top: 0;
+}
+body > main > section > article:last-child {
+  margin-bottom: 0;
+}
+body > main > section > :first-child {
+  margin-top: 0;
+}
+body > main > section > :last-child {
+  margin-bottom: 0;
+}
+body > main > :first-child {
+  margin-top: 0;
+}
+body > main > :last-child {
+  margin-bottom: 0;
+}
+body > footer {
+  background-color: #b6b6cf;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+body > footer > :first-child {
+  margin-top: 0;
+}
+body > footer > :last-child {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=main.css.map */

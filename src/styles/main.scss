@@ -1,7 +1,163 @@
+:root {
+	--margin-v-1: 1rem;
+	--margin-v-1_5: 1.5rem;
+	--margin-v-2: 2rem;
+	--margin-v-2_5: 2.5rem;
+	--margin-v-3: 3rem;
+	--margin-v-3_5: 3.5rem;
+	--margin-v-4: 4rem;
+	--margin-v-4_5: 4.5rem;
+
+	--margin-h-4: 4rem;
+	--max-pw: 40rem;
+}
+
 body {
-	font-family: sans-serif;
-	font-size: 14px;
+	background-color: #dfdbd5;
+	color: #3a352e;
+	font-family: 'Crete Round', serif;
+	font-style: normal;
+	font-weight: normal;
+
 	line-height: 1.6;
-	color: #333;
-	background-color: #a36363;
+	margin: 0;
+	padding: 0;
+
+	> header {
+		background-color: #b6b6cf;
+		color: #fff;
+		padding: 2rem;
+		text-align: center;
+
+		> h1 {
+			font-size: 3rem;
+			font-weight: 200;
+			margin: 0;
+		}
+
+		> nav {
+			> ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+
+				> li {
+					display: inline-block;
+					margin-right: 10px;
+
+					> a {
+						color: #fff;
+						text-decoration: none;
+
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+		& > :first-child {
+			margin-top: 0;
+		}
+
+		& > :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	> main {
+		margin: 0;
+		padding: 0;
+
+		> header {
+			margin: 2rem 0;
+
+			> h2 {
+				font-size: 2.5rem;
+				font-weight: 200;
+				margin: 0 auto;
+				max-width: var(--max-pw);
+			}
+
+			> p {
+				font-size: 1.5rem;
+				font-weight: 200;
+				margin: 0 auto;
+				max-width: var(--max-pw);
+			}
+
+			& > :first-child {
+				margin-top: 0;
+			}
+
+			& > :last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		> section {
+			margin: var(--margin-v-4) 0;
+
+			> h3 {
+				font-size: 2rem;
+				font-weight: 200;
+				margin: 0 auto;
+				max-width: var(--max-pw);
+			}
+
+			> article {
+				margin: var(--margin-v-2) 0;
+
+				> h4 {
+					font-size: 1.5rem;
+					font-weight: 200;
+					margin: 0 auto;
+					max-width: var(--max-pw);
+				}
+
+				> p {
+					margin: 0 auto;
+					max-width: var(--max-pw);
+				}
+
+				&:first-child {
+					margin-top: 0;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			& > :first-child {
+				margin-top: 0;
+			}
+
+			& > :last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		& > :first-child {
+			margin-top: 0;
+		}
+
+		& > :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	> footer {
+		background-color: #b6b6cf;
+		color: #fff;
+		padding: 2rem;
+		text-align: center;
+
+		& > :first-child {
+			margin-top: 0;
+		}
+
+		& > :last-child {
+			margin-bottom: 0;
+		}
+	}
 }

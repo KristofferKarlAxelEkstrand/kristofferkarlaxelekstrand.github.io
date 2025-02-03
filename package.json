@@ -10,9 +10,11 @@
 		"build": "npm run build:css && npm run build:js",
 		"build:css": "sass src/styles:docs/styles --style=compressed",
 		"build:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env && minify docs/scripts --out-dir docs/scripts",
-		"watch": "npm run watch:css & npm run watch:js",
+		"watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
 		"watch:css": "sass --watch src/styles:docs/styles",
-		"watch:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env --watch"
+		"watch:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env --watch",
+		"pretty": "prettier --write \"src/**/*.{js,scss}\"",
+		"lint:css": "stylelint **/*.scss --fix"
 	},
 	"repository": {
 		"type": "git",
@@ -35,6 +37,10 @@
 		"@babel/core": "^7.26.7",
 		"@babel/preset-env": "^7.26.7",
 		"babel-minify": "^0.5.2",
-		"sass": "^1.83.4"
+		"concurrently": "^7.0.0",
+		"prettier": "^3.4.2",
+		"sass": "^1.83.4",
+		"stylelint": "^16.14.1",
+		"stylelint-order": "^6.0.4"
 	}
 }

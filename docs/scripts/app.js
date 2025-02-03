@@ -1,1 +1,3 @@
-"use strict";alert("hello world");
+"use strict";
+
+console.log('ssss hellso worlsd');
