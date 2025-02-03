@@ -9,7 +9,10 @@
 	"scripts": {
 		"build": "npm run build:css && npm run build:js",
 		"build:css": "sass src/styles:docs/styles --style=compressed",
-		"build:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env && minify docs/scripts --out-dir docs/scripts"
+		"build:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env && minify docs/scripts --out-dir docs/scripts",
+		"watch": "npm run watch:css & npm run watch:js",
+		"watch:css": "sass --watch src/styles:docs/styles",
+		"watch:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env --watch"
 	},
 	"repository": {
 		"type": "git",
