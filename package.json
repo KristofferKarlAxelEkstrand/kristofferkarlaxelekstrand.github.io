@@ -1,26 +1,37 @@
 {
-  "name": "kristofferkarlaxelekstrand.github.io",
-  "version": "1.0.0",
-  "description": "Kristoffer Ekstrand Github IO Page.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "kristofferkarlaxelekstrand.github.io"
-  },
-  "keywords": [
-    "Kristoffer",
-    "Ekstrand",
-    "Deign",
-    "Code",
-    "Text",
-    "Sound"
-  ],
-  "author": "Kristoffer Ekstrand",
-  "license": "ISC"
+	"name": "kristofferkarlaxelekstrand.github.io",
+	"version": "1.0.0",
+	"description": "Kristoffer Ekstrand Github IO Page.",
+	"main": "index.js",
+	"directories": {
+		"doc": "docs"
+	},
+	"scripts": {
+		"build": "npm run build:css && npm run build:js",
+		"build:css": "sass src/styles:docs/styles --style=compressed",
+		"build:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env && minify docs/scripts --out-dir docs/scripts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/KristofferKarlAxelEkstrand/kristofferkarlaxelekstrand.github.io"
+	},
+	"keywords": [
+		"Kristoffer",
+		"Ekstrand",
+		"Wave-forms",
+		"JavaScript",
+		"Deign",
+		"Code",
+		"Text",
+		"Sound"
+	],
+	"author": "Kristoffer Ekstrand",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.26.4",
+		"@babel/core": "^7.26.7",
+		"@babel/preset-env": "^7.26.7",
+		"babel-minify": "^0.5.2",
+		"sass": "^1.83.4"
+	}
 }
