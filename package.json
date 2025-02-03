@@ -1,0 +1,26 @@
+{
+  "name": "kristofferkarlaxelekstrand.github.io",
+  "version": "1.0.0",
+  "description": "Kristoffer Ekstrand Github IO Page.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "kristofferkarlaxelekstrand.github.io"
+  },
+  "keywords": [
+    "Kristoffer",
+    "Ekstrand",
+    "Deign",
+    "Code",
+    "Text",
+    "Sound"
+  ],
+  "author": "Kristoffer Ekstrand",
+  "license": "ISC"
+}
