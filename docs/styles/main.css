@@ -28,8 +28,8 @@ body > header {
 body > header > h1 {
   font-size: 4rem;
   font-weight: 200;
-  margin: 0;
   line-height: 1;
+  margin: 0;
   margin: 0 auto;
   max-width: var(--max-pw);
 }
