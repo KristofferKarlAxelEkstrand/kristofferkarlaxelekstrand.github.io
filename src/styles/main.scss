@@ -24,14 +24,16 @@ body {
 	padding: 0;
 
 	> header {
-		color: #fff;
 		padding: 2rem;
 		text-align: center;
 
 		> h1 {
-			font-size: 3rem;
+			font-size: 4rem;
 			font-weight: 200;
 			margin: 0;
+			line-height: 1;
+			margin: 0 auto;
+			max-width: var(--max-pw);
 		}
 
 		> nav {
@@ -45,7 +47,7 @@ body {
 					margin-right: 10px;
 
 					> a {
-						color: #fff;
+						color: #3a352e;
 						text-decoration: none;
 
 						&:hover {

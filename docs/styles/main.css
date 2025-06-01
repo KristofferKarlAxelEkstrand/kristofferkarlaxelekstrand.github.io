@@ -22,14 +22,16 @@ body {
   padding: 0;
 }
 body > header {
-  color: #fff;
   padding: 2rem;
   text-align: center;
 }
 body > header > h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 200;
   margin: 0;
+  line-height: 1;
+  margin: 0 auto;
+  max-width: var(--max-pw);
 }
 body > header > nav > ul {
   list-style: none;
@@ -41,7 +43,7 @@ body > header > nav > ul > li {
   margin-right: 10px;
 }
 body > header > nav > ul > li > a {
-  color: #fff;
+  color: #3a352e;
   text-decoration: none;
 }
 body > header > nav > ul > li > a:hover {
