@@ -7,7 +7,7 @@
 		"doc": "docs"
 	},
 	"scripts": {
-		"dev": "live-server docs",
+		"dev": "concurrently \"npm run watch\" \"live-server docs\"",
 		"build": "npm run build:css && npm run build:js",
 		"build:css": "sass src/styles:docs/styles --style=compressed",
 		"build:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env && minify docs/scripts --out-dir docs/scripts",
@@ -15,7 +15,8 @@
 		"watch:css": "sass --watch src/styles:docs/styles",
 		"watch:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env --watch",
 		"pretty": "prettier --write \"src/**/*.{js,scss}\"",
-		"lint:css": "stylelint **/*.scss --fix"
+		"lint:css": "stylelint **/*.scss --fix",
+		"clean": "rm -rf docs/styles docs/scripts"
 	},
 	"repository": {
 		"type": "git",
