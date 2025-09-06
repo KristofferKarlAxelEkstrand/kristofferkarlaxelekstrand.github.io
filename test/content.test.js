@@ -2,6 +2,10 @@
 let htmlContent;
 let doc;
 
+const fs = require('fs');
+const path = require('path');
+// Note: testUtils is set up globally in setup.js, no need to require it
+
 describe('Content Validation', () => {
 	beforeAll(() => {
 		// Load HTML content
@@ -9,21 +13,7 @@ describe('Content Validation', () => {
 		htmlContent = fs.readFileSync(htmlFile, 'utf8');
 
 		// Use improved HTML parsing from test utilities
-		doc = testUtils.parseHTML(htmlContent);
-
-		console.log('beforeAll executed, htmlContent length:', htmlContent.length);
-	});
-
-	const fs = require('fs');
-	const path = require('path');
-
-	beforeAll(() => {
-		// Load HTML content
-		const htmlFile = path.resolve(__dirname, '../docs/index.html');
-		htmlContent = fs.readFileSync(htmlFile, 'utf8');
-
-		// Use improved HTML parsing from test utilities
-		doc = testUtils.parseHTML(htmlContent);
+		doc = global.testUtils.parseHTML(htmlContent);
 
 		console.log('beforeAll executed, htmlContent length:', htmlContent.length);
 	});

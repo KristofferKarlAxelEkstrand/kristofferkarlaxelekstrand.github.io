@@ -11,6 +11,11 @@
 	padding: 0 var(--padding-x);
 }
 
+// ============================================================================
+// VARIABLES & MIXINS
+// ============================================================================
+
+// CSS Custom Properties with fallbacks for older browsers
 :root {
 	--margin-v-1: 1rem;
 	--margin-v-1_5: 1.5rem;
@@ -27,23 +32,9 @@
 	--max-pw: 44rem;
 }
 
-// Skip to content link for accessibility
-.skip-to-content {
-	position: absolute;
-	top: -40px;
-	left: 6px;
-	background: #85ff85;
-	color: #3c2252;
-	padding: 8px;
-	text-decoration: none;
-	border-radius: 4px;
-	font-weight: bold;
-	z-index: 1000;
-
-	&:focus {
-		top: 6px;
-	}
-}
+// ============================================================================
+// RESET & BASE STYLES
+// ============================================================================
 
 *,
 *::before,
@@ -58,13 +49,37 @@ body {
 	font-family: 'Raleway', sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
-	font-style: normal;
-	font-weight: normal;
 	font-weight: 400;
 	line-height: 1.6;
 	margin: 0;
 	padding: 0;
 }
+
+// ============================================================================
+// ACCESSIBILITY
+// ============================================================================
+
+// Skip to content link for accessibility
+.skip-to-content {
+	background: #85ff85;
+	border-radius: 4px;
+	color: #3c2252;
+	font-weight: bold;
+	left: 6px;
+	padding: 8px;
+	position: absolute;
+	text-decoration: none;
+	top: -40px;
+	z-index: 1000;
+
+	&:focus {
+		top: 6px;
+	}
+}
+
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
 
 h1,
 h2,
@@ -76,14 +91,6 @@ h6 {
 	font-style: normal;
 	font-weight: 400;
 	@include padding;
-}
-
-hr {
-	border: none;
-	border-top: 1rem solid #85ff85;
-	color: #85ff85;
-	margin: 6rem auto;
-	max-width: calc(var(--max-pw) - var(--padding-x) * 2);
 }
 
 h1 {
@@ -119,7 +126,6 @@ p {
 
 	&.preamble {
 		font-size: 1.5rem;
-		font-weight: 700;
 		font-weight: 600;
 		margin: 1rem auto;
 		max-width: var(--max-pw);
@@ -138,6 +144,18 @@ p {
 		margin-top: -1.6rem;
 	}
 }
+
+hr {
+	border: none;
+	border-top: 1rem solid #85ff85;
+	color: #85ff85;
+	margin: 6rem auto;
+	max-width: calc(var(--max-pw) - var(--padding-x) * 2);
+}
+
+// ============================================================================
+// LINKS & INTERACTIONS
+// ============================================================================
 
 a {
 	color: #85ff85;
@@ -158,9 +176,21 @@ a {
 	color: #3c2252;
 }
 
+// ============================================================================
+// LAYOUT
+// ============================================================================
+
 body > header {
 	margin: 6rem 0;
 	text-align: center;
+
+	& > :first-child {
+		margin-top: 0;
+	}
+
+	& > :last-child {
+		margin-bottom: 0;
+	}
 
 	> nav {
 		> ul {
@@ -174,18 +204,8 @@ body > header {
 
 			> li {
 				display: inline-block;
-
-				> a {
-				}
 			}
 		}
-	}
-	& > :first-child {
-		margin-top: 0;
-	}
-
-	& > :last-child {
-		margin-bottom: 0;
 	}
 }
 
@@ -193,50 +213,41 @@ main {
 	margin: 0;
 	padding: 0;
 
+	@include remove-outer-margins;
+
 	> header {
 		margin: 2rem 0;
-
 		text-align: center;
-
 		@include remove-outer-margins;
 	}
 
 	> section {
 		margin: var(--margin-v-4) 0;
-
-		> h3 {
-		}
+		@include remove-outer-margins;
 
 		> article {
 			margin: 6rem 0;
-
-			> h4 {
-			}
-
-			> p {
-			}
-
 			@include remove-outer-margins;
 		}
-
-		@include remove-outer-margins;
 	}
-	@include remove-outer-margins;
 }
 
 footer {
 	margin: 6rem auto;
 	padding: 0;
 	text-align: center;
-
 	@include remove-outer-margins;
 }
+
+// ============================================================================
+// PRINT STYLES
+// ============================================================================
 
 @media print {
 	* {
 		background: white !important;
-		color: black !important;
 		box-shadow: none !important;
+		color: black !important;
 		text-shadow: none !important;
 	}
 
@@ -245,8 +256,8 @@ footer {
 	}
 
 	a {
-		text-decoration: underline;
 		color: black !important;
+		text-decoration: underline;
 
 		&[href^='http']:after {
 			content: ' (' attr(href) ')';

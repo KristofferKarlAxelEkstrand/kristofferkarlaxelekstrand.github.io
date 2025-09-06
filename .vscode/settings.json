@@ -1,7 +1,9 @@
 {
 	"workbench.colorCustomizations": {
-		"titleBar.activeBackground": "#1e4752",
-		"titleBar.inactiveBackground": "#17353d"
+		"titleBar.activeBackground": "#b1e02d",
+		"titleBar.activeForeground": "#000000c5",
+		"titleBar.inactiveBackground": "#9bc231",
+		"titleBar.inactiveForeground": "#0000008c"
 	},
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -16,5 +18,5 @@
 	},
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
-	"cSpell.words": ["Adoore", "adventurekid", "Affärskommunikation", "Airmee", "AKWF", "Axure", "Budbee", "chatmode", "Chiptune", "Contentful", "contentinfo", "describedby", "Ecommerce", "Episerver", "Flexbox", "focusable", "gardengobbler", "Helsingborgs", "istone", "Jönköping", "Joshsthlm", "karlaxel", "Klarna", "Klaviyo", "Kommun", "Kristoffer", "kristofferkarlaxelekstrand", "labelledby", "Lemoon", "Litium", "microdata", "MKONG", "Nässjö", "ndash", "Netpublicator", "overcomplicate", "Panagora", "peaceiris", "Raleway", "rgba", "Schibsted", "Sjöstrand", "sjostrandcoffee", "srcset", "tabindex", "Tanrevel", "Toffe", "Translado", "Trustpilot", "unobserve", "Venga", "Vinoteket", "WCAG", "webp", "wireframing", "XCAP"]
+	"cSpell.words": ["Adoore", "adventurekid", "Affärskommunikation", "Airmee", "AKWF", "Axure", "Backlink", "backlinks", "Budbee", "chatmode", "chatmodes", "Chiptune", "Contentful", "contentinfo", "corejs", "Crawlability", "describedby", "Ecommerce", "Episerver", "favicons", "Flexbox", "focusable", "gardengobbler", "grandpublic", "gtag", "Helsingborgs", "hreflang", "istone", "Jönköping", "Joshsthlm", "karlaxel", "Klarna", "Klaviyo", "Kommun", "Kristoffer", "kristofferkarlaxelekstrand", "labelledby", "Lemoon", "Litium", "microdata", "minifiers", "MKONG", "Nässjö", "ndash", "Netpublicator", "noopener", "noreferrer", "noscript", "overcomplicate", "overengineering", "Panagora", "peaceiris", "Raleway", "retranspiles", "rgba", "Schibsted", "SERP", "Sjöstrand", "sjostrandcoffee", "srcset", "tabindex", "Tanrevel", "Toffe", "Translado", "transpiles", "Trustpilot", "unobserve", "Venga", "Vinoteket", "WCAG", "webp", "wireframing", "XCAP", "YMYL"]
 }

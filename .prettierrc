@@ -4,5 +4,26 @@
 	"tabWidth": 4,
 	"semi": true,
 	"useTabs": true,
-	"printWidth": 1000
+	"printWidth": 1000,
+	"proseWrap": "preserve",
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2,
+				"printWidth": 80,
+				"proseWrap": "always"
+			}
+		},
+		{
+			"files": "*.chatmode.md",
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2,
+				"printWidth": 1000,
+				"proseWrap": "preserve"
+			}
+		}
+	]
 }

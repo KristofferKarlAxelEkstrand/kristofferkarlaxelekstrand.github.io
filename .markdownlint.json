@@ -1,0 +1,9 @@
+{
+	"MD040": {
+		"allowed_languages": ["text", "bash", "javascript", "js", "html", "css", "scss", "json", "markdown", "md", "yaml", "yml"],
+		"language_only": false
+	},
+	"MD013": false,
+	"MD033": false,
+	"MD041": false
+}

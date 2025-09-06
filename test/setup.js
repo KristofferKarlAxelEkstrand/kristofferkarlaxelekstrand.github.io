@@ -95,13 +95,13 @@ global.testUtils = {
 					return langMatch ? { getAttribute: () => langMatch[1] } : null;
 				}
 				if (selector === 'main') {
-					return htmlContent.includes('<main>') ? { children: [{}, {}] } : null; // Mock children
+					return htmlContent.includes('<main') ? { children: [{}, {}] } : null; // Mock children
 				}
 				if (selector === 'header') {
-					return htmlContent.includes('<header>') ? {} : null;
+					return htmlContent.includes('<header') ? {} : null;
 				}
 				if (selector === 'footer') {
-					return htmlContent.includes('<footer>') ? {} : null;
+					return htmlContent.includes('<footer') ? {} : null;
 				}
 				if (selector === 'meta[name="description"]') {
 					const descMatch = htmlContent.match(/<meta[^>]*name="description"[^>]*content="([^"]*)"[^>]*>/);

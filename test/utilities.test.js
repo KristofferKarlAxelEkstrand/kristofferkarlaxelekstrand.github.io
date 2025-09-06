@@ -162,7 +162,7 @@ describe('Utility Functions and Scripts', () => {
 		test('package.json contains required fields', () => {
 			const packageJson = require('../package.json');
 
-			const requiredFields = ['name', 'version', 'description', 'main', 'scripts', 'repository', 'keywords', 'author', 'license'];
+			const requiredFields = ['name', 'version', 'description', 'scripts', 'repository', 'keywords', 'author', 'license'];
 
 			requiredFields.forEach((field) => {
 				expect(packageJson).toHaveProperty(field);

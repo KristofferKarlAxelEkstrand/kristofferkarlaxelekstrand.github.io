@@ -1,0 +1,29 @@
+{
+  "name": "Kristoffer Ekstrand",
+  "short_name": "Kristoffer",
+  "description": "Digital Project Manager & Frontend Developer portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3c2252",
+  "theme_color": "#3c2252",
+  "icons": [
+    {
+      "src": "/fav/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/fav/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/fav/icon-mask.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}
