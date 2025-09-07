@@ -1,5 +1,5 @@
 module.exports = {
-	testEnvironment: 'jsdom',
+	testEnvironment: 'node',
 	roots: ['<rootDir>/test'],
 	testMatch: ['**/*.test.js'],
 	setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
@@ -10,6 +10,9 @@ module.exports = {
 			functions: 80,
 		},
 	},
-	coverageReporters: ['text', 'lcov'],
-	testTimeout: 30000,
+	coverageReporters: ['text'],
+	testTimeout: 10000,
+	maxWorkers: 1,
+	bail: false,
+	verbose: false,
 };

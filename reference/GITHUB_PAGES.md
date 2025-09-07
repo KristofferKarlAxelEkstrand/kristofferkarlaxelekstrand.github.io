@@ -1,80 +1,63 @@
-# GitHub Pages - Static Site Hosting
+# GitHub Pages
 
 ## What is GitHub Pages?
 
-GitHub Pages is a free static site hosting service that serves HTML, CSS, and
-JavaScript files directly from a GitHub repository. It provides HTTPS by default
-and supports custom domains.
+GitHub Pages is GitHub's free static site hosting service that automatically
+deploys websites from repository files with global CDN and HTTPS support.
 
-## Role in This Project
+## Why GitHub Pages?
 
-GitHub Pages hosts the portfolio website from the `/docs` folder, serving the
-built and optimized static files. It provides reliable, free hosting with
-automatic HTTPS and global CDN distribution.
+- **Free Hosting**: No cost professional website hosting
+- **Automatic Deployment**: Push-to-deploy workflow
+- **Performance**: Global CDN with fast content delivery
+- **Security**: Automatic HTTPS certificates
+- **Integration**: Seamless GitHub workflow integration
 
-### Key Implementation Details
+## How it's used in this project
+
+### Repository Setup
 
 - **Repository**: `kristofferkarlaxelekstrand.github.io`
-- **Source**: `/docs` folder (built files)
-- **URL**: `https://kristofferkarlaxelekstrand.github.io`
-- **Branch**: `main` branch
-- **Build Process**: Automated deployment via git push
+- **Type**: User site (username.github.io format)
+- **Source**: `/docs` directory deployment
 
-### Project-Specific Benefits
+### Deployment Process
 
-- **Free Hosting**: No hosting costs for the portfolio
-- **Automatic HTTPS**: SSL certificate included
-- **Global CDN**: Fast loading worldwide
-- **Git Integration**: Deploy by pushing to main branch
-- **Custom Domain**: Supports kristofferkarlaxelekstrand.github.io
-
-### Deployment Workflow
-
-1. **Development**: Edit files in `src/` folder
-2. **Build**: Run `npm run build` to compile assets
-3. **Test**: Run `npm run lighthouse` for quality assurance
-4. **Deploy**: Push changes to main branch
-5. **Live**: Site automatically updates within minutes
-
-### Build and Deploy Integration
-
-The project uses automated build scripts that prepare the `/docs` folder for
-GitHub Pages:
-
-```json
-"build": "npm run build:css && npm run build:js && npm run build:html"
+```text
+1. Push to main branch
+2. GitHub Actions builds project
+3. Build outputs to docs/ directory
+4. GitHub Pages serves updated content
+5. Live at https://kristofferkarlaxelekstrand.github.io
 ```
 
-This ensures all assets are optimized before deployment:
+### File Structure Served
 
-- **CSS**: Compiled and compressed from SCSS
-- **JavaScript**: Transpiled to ES5 and minified
-- **HTML**: Minified with embedded assets optimized
-
-### Quality Assurance Before Deploy
-
-```json
-"audit": "npm run build && npm run lighthouse"
+```text
+docs/
+├── index.html           # Main portfolio page
+├── styles/main.css      # Optimized CSS
+├── scripts/app.js       # Minified JavaScript
+├── *.png, *.ico        # Favicons and icons
+├── robots.txt          # SEO configuration
+├── sitemap.xml         # Search engine sitemap
+└── sw.js               # Service worker
 ```
 
-The audit script combines build and Lighthouse testing to ensure:
+### Configuration
 
-- All files compile successfully
-- Performance meets standards
-- Accessibility requirements are satisfied
-- SEO best practices are followed
+- **Source Directory**: `/docs` folder setting in repository
+- **Branch**: `main` branch deployment
+- **Custom Domain**: Ready for CNAME configuration
+- **HTTPS**: Automatic SSL certificate provisioning
 
-### Repository Configuration
+### Performance Features
 
-- **Source Branch**: `main`
-- **Source Folder**: `/docs`
-- **Build Command**: None (pre-built files)
-- **Publish Directory**: `/docs`
-- **Domain**: `kristofferkarlaxelekstrand.github.io`
+- **Global CDN**: Fast worldwide content delivery
+- **Caching**: Optimized static asset caching
+- **Compression**: Automatic gzip compression
+- **Security**: HTTPS enforcement for professional standards
 
-### Performance Benefits
-
-- **CDN Distribution**: Global edge network for fast loading
-- **HTTPS by Default**: Secure connections without configuration
-- **Compression**: Automatic gzip compression for text files
-- **Caching**: Optimized caching headers for static assets
+The setup provides reliable, professional hosting with automatic deployment that
+demonstrates modern development and deployment practices to potential clients
+and employers.

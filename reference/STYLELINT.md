@@ -1,61 +1,64 @@
-# Stylelint - CSS/SCSS Linting
+# Stylelint
 
 ## What is Stylelint?
 
-Stylelint is a modern CSS linter that helps catch errors, enforce conventions,
-and improve code quality in CSS and SCSS files. It analyzes stylesheets for
-syntax errors, stylistic issues, and potential problems, ensuring consistent and
-maintainable CSS code.
+Stylelint is a CSS linter that catches errors, enforces style conventions, and
+promotes best practices in CSS and SCSS code.
 
-## Role in This Project
+## Why Stylelint?
 
-Stylelint ensures consistent SCSS code quality and enforces best practices
-during development of Kristoffer's portfolio website. It runs as part of the
-build process and development workflow, maintaining professional CSS standards.
+- **Error Detection**: Catches CSS syntax and logic errors
+- **Style Consistency**: Enforces formatting conventions
+- **Best Practices**: Promotes modern CSS standards
+- **Code Quality**: Maintains professional presentation
+- **Auto-Fixing**: Automatically corrects many issues
 
-### Key Implementation Details
+## How it's used in this project
 
-- **Package**: `stylelint@^16.23.1` with `stylelint-order@^7.0.0` plugin
-- **Configuration**: `.stylelintrc.json` with custom rules for property ordering
-- **Lint Script**: `"lint:css": "stylelint **/*.scss --fix"`
-- **Integration**: Runs automatically during development and build processes
-- **Auto-fix**: `--fix` flag automatically corrects many formatting issues
+### Configuration
 
-### Project-Specific Benefits
+Uses standard SCSS configuration:
 
-- **Code Consistency**: Enforces alphabetical property ordering for better
-  readability
-- **Error Prevention**: Catches potential CSS issues before production
-  deployment
-- **Development Speed**: Auto-fix reduces manual formatting work
-- **Maintainability**: Consistent code style across all SCSS files
-- **Quality Assurance**: Validates SCSS-specific syntax and patterns
+- `stylelint-config-standard-scss` - Base SCSS rules
+- `stylelint-order` - Property ordering enforcement
 
-### Configuration Example
+### Target Files
 
-```json
-{
-  "plugins": ["stylelint-order"],
-  "rules": {
-    "order/properties-alphabetical-order": true
-  }
-}
+- `**/*.scss` - All SCSS files throughout the project
+
+### Commands
+
+```bash
+npm run lint   # Lint SCSS + Markdown with auto-fix
+npm run check  # Pre-commit validation including Stylelint
 ```
 
-This configuration ensures all CSS properties are ordered alphabetically, making
-stylesheets easier to scan and maintain.
+### Rules Enforced
 
-### Integration with Build Pipeline
+- **SCSS Syntax**: Valid syntax validation
+- **Property Order**: Consistent property sequencing
+- **Formatting**: Spacing, indentation, quotes
+- **Best Practices**: Modern CSS standards
+- **Error Prevention**: Logic and syntax issue detection
 
-- **Development**: Runs with `--fix` to automatically correct issues
-- **Build Process**: Integrated into quality checks before GitHub Pages
-  deployment
-- **Pre-commit**: Can be run before committing changes to maintain standards
+### Auto-Fix Capabilities
 
-### Common Issues Caught
+The `--fix` flag automatically corrects:
 
-- Invalid CSS properties or values
-- Inconsistent spacing and formatting
-- Missing vendor prefixes (when needed)
-- Unused CSS rules
-- Accessibility-related CSS issues
+- Property ordering standardization
+- Consistent spacing and indentation
+- Quote style normalization
+- Trailing semicolon enforcement
+- Whitespace cleanup
+
+### Quality Integration
+
+Works alongside:
+
+- **Prettier**: Code formatting
+- **Markdownlint**: Documentation quality
+- **Build Pipeline**: Pre-build validation
+
+Ensures comprehensive code quality standards across all file types while
+maintaining professional SCSS code presentation essential for portfolio
+projects.

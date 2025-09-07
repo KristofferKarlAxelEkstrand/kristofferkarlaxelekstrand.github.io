@@ -2,6 +2,7 @@
 	& > :first-child {
 		margin-top: 0;
 	}
+
 	& > :last-child {
 		margin-bottom: 0;
 	}
@@ -18,16 +19,14 @@
 // CSS Custom Properties with fallbacks for older browsers
 :root {
 	--margin-v-1: 1rem;
-	--margin-v-1_5: 1.5rem;
+	--margin-v-1-5: 1.5rem;
 	--margin-v-2: 2rem;
-	--margin-v-2_5: 2.5rem;
+	--margin-v-2-5: 2.5rem;
 	--margin-v-3: 3rem;
-	--margin-v-3_5: 3.5rem;
+	--margin-v-3-5: 3.5rem;
 	--margin-v-4: 4rem;
-	--margin-v-4_5: 4.5rem;
-
+	--margin-v-4-5: 4.5rem;
 	--margin-h-4: 4rem;
-
 	--padding-x: 4rem;
 	--max-pw: 44rem;
 }
@@ -45,8 +44,7 @@
 body {
 	background-color: #3c2252;
 	color: #85ff85;
-	font-family: 'Crete Round', serif;
-	font-family: 'Raleway', sans-serif;
+	font-family: Raleway, sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-weight: 400;
@@ -87,9 +85,10 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Caprasimo', serif;
+	font-family: Caprasimo, serif;
 	font-style: normal;
 	font-weight: 400;
+
 	@include padding;
 }
 
@@ -97,31 +96,32 @@ h1 {
 	font-size: 4rem;
 	font-weight: 200;
 	line-height: 1;
-	margin: 2rem auto 0.5rem auto;
+	margin: 2rem auto 0.5rem;
 	max-width: var(--max-pw);
 }
 
 h2 {
 	font-size: 2.5rem;
-	margin: 2rem auto 0.5rem auto;
+	margin: 2rem auto 0.5rem;
 	max-width: var(--max-pw);
 }
 
 h3 {
 	font-size: 2rem;
-	margin: 2rem auto 0.5rem auto;
+	margin: 2rem auto 0.5rem;
 	max-width: var(--max-pw);
 }
 
 h4 {
 	font-size: 1.5rem;
-	margin: 2rem auto 0.5rem auto;
+	margin: 2rem auto 0.5rem;
 	max-width: var(--max-pw);
 }
 
 p {
 	margin: 1.5rem auto;
 	max-width: var(--max-pw);
+
 	@include padding;
 
 	&.preamble {
@@ -171,11 +171,6 @@ a {
 	color: #3c2252;
 }
 
-::-moz-selection {
-	background: #85ff85;
-	color: #3c2252;
-}
-
 // ============================================================================
 // LAYOUT
 // ============================================================================
@@ -218,15 +213,18 @@ main {
 	> header {
 		margin: 2rem 0;
 		text-align: center;
+
 		@include remove-outer-margins;
 	}
 
 	> section {
 		margin: var(--margin-v-4) 0;
+
 		@include remove-outer-margins;
 
 		> article {
 			margin: 6rem 0;
+
 			@include remove-outer-margins;
 		}
 	}
@@ -236,6 +234,7 @@ footer {
 	margin: 6rem auto;
 	padding: 0;
 	text-align: center;
+
 	@include remove-outer-margins;
 }
 
@@ -259,7 +258,7 @@ footer {
 		color: black !important;
 		text-decoration: underline;
 
-		&[href^='http']:after {
+		&[href^='http']::after {
 			content: ' (' attr(href) ')';
 			font-size: 0.8em;
 		}
@@ -278,12 +277,15 @@ footer {
 	h1 {
 		font-size: 18pt;
 	}
+
 	h2 {
 		font-size: 16pt;
 	}
+
 	h3 {
 		font-size: 14pt;
 	}
+
 	h4 {
 		font-size: 13pt;
 	}

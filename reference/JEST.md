@@ -1,64 +1,58 @@
-# Jest - JavaScript Testing Framework
+# Jest
 
 ## What is Jest?
 
-Jest is a JavaScript testing framework with built-in mocking, code coverage, and
-snapshot testing capabilities. It's designed for simplicity and works
-out-of-the-box for most JavaScript projects, providing a complete testing
-solution for modern web applications.
+Jest is a JavaScript testing framework that provides test running, assertions,
+mocking, and coverage reporting in a single package.
 
-## Role in This Project
+## Why Jest?
 
-Jest validates the static site build process and content quality through
-comprehensive testing. It ensures HTML structure, accessibility compliance, and
-build pipeline functionality for Kristoffer's portfolio website.
+- **Build Validation**: Ensures build processes work correctly
+- **Quality Assurance**: Maintains code standards before deployment
+- **Error Prevention**: Catches issues before production
+- **Coverage Tracking**: Enforces minimum test coverage thresholds
 
-### Key Implementation Details
+## How it's used in this project
 
-- **Package**: `jest@^30.1.3` with `jest-environment-jsdom@^30.1.2`
-- **Configuration**: `jest.config.js` with jsdom environment for DOM testing
-- **Test Script**: `"test": "jest"`
-- **Coverage**: 80% threshold for branches and functions
-- **Test Files**: `test/*.test.js` and `src/scripts/app.test.js`
-- **Setup**: `test/setup.js` for test environment configuration
+### Configuration
 
-### Project-Specific Benefits
+`jest.config.js` settings:
 
-- **Content Validation**: Tests HTML structure, links, and accessibility
-  compliance
-- **Build Verification**: Ensures SCSS/CSS compilation and JS transpilation work
-  correctly
-- **Quality Assurance**: Catches regressions and maintains professional
-  standards
-- **CI/CD Ready**: Automated testing provides confidence for GitHub Pages
-  deployment
+- **Environment**: jsdom for DOM testing
+- **Test Pattern**: `**/*.test.js` in test directory
+- **Coverage Threshold**: 80% for branches and functions
+- **Timeout**: 30 seconds for build validation tests
 
-### Test Categories
+### Test Structure
 
-- **Content Tests**: HTML structure validation, SEO meta tags, link checking
-- **Build Tests**: SCSS compilation output, JS transpilation verification
-- **Integration Tests**: End-to-end build pipeline validation
-- **Accessibility Tests**: WCAG compliance checks for the portfolio content
-
-### Configuration Example
-
-```javascript
-module.exports = {
-  testEnvironment: 'jsdom',
-  roots: ['<rootDir>/test'],
-  testMatch: ['**/*.test.js'],
-  setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
-  collectCoverageFrom: ['src/**/*.js', '!src/**/*.test.js'],
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-    },
-  },
-  coverageReporters: ['text', 'lcov'],
-  testTimeout: 30000,
-};
+```text
+test/
+├── build.test.js      # Build process validation
+├── content.test.js    # HTML output validation
+├── utilities.test.js  # Helper function testing
+└── setup.js          # Test environment setup
 ```
 
-This configuration enables DOM testing with jsdom, ensuring tests can interact
-with HTML elements just like a real browser.
+### Build Integration
+
+```bash
+npm run test           # Run full test suite
+npm run validate       # HTML validation + Jest tests
+npm run build          # Includes automatic testing
+```
+
+### What Gets Tested
+
+- **Build Output**: File existence and structure validation
+- **HTML Content**: Semantic structure and required elements
+- **Build Process**: Error handling and output verification
+- **File Optimization**: Size and compression validation
+
+### Coverage Reporting
+
+- **Threshold**: 80% minimum for branches and functions
+- **Output**: HTML reports in `coverage/` directory
+- **CI Integration**: Automated coverage validation
+
+The testing setup ensures reliable deployments by validating the build system
+works correctly before any code reaches production.

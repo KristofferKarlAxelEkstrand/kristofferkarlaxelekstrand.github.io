@@ -1,202 +1,62 @@
-# Gold Standard Favicon Setup Guide
+# Favicon Guide
 
-## 🎯 Current Status
+## What are Favicons?
 
-Your site now has a **complete favicon setup** with all the necessary files:
+Favicons are small icons representing websites in browser tabs, bookmarks, and
+mobile home screens across different devices and platforms.
 
-### ✅ Files Created
+## Why Favicons?
 
-- `favicon.ico` (traditional favicon)
-- `favicon-16x16.png` & `favicon-32x32.png` (browser tabs)
-- `apple-touch-icon.png` (iOS home screen)
-- `icon-192x192.png` & `icon-512x512.png` (PWA icons)
-- SVG versions as fallbacks
+- **Brand Recognition**: Instant visual identification
+- **Professional Presentation**: Demonstrates attention to detail
+- **User Experience**: Easy site identification in tabs and bookmarks
+- **Platform Coverage**: Support for all devices and operating systems
 
-### ✅ Configuration
+## How it's used in this project
 
-- HTML meta tags properly configured
-- Web App Manifest updated with PNG icons
-- Build process copies all files
-- GitHub Pages deployment ready
+### Generation Process
 
-## 🎨 Creating Professional Favicons
+Custom build script `build-favicons-sharp.js` generates all formats from a
+single source using Sharp image processing.
 
-### Option 1: Use Your Existing SVG Icons
+### Source File
 
-Your current SVG icons are actually quite good! They use your brand colors:
+- **Input**: `src/assets/logo.svg`
+- **Format**: Vector SVG for crisp scaling
+- **Quality**: Maintains sharpness at all sizes
 
-- Background: `#3c2252` (purple)
-- Foreground: `#85ff85` (green)
-- Initials: "KE"
+### Generated Files
 
-**To convert SVG to PNG:**
-
-```bash
-# If you have ImageMagick installed:
-convert icon-192.svg icon-192x192.png
-convert icon-512.svg icon-512x512.png
-convert apple-touch-icon.svg apple-touch-icon.png
-
-# For favicon.ico (multi-size):
-convert favicon-16x16.png favicon-32x32.png favicon.ico
+```text
+docs/
+├── favicon.ico           # Classic 16x16 browser icon
+├── favicon-32x32.png     # Modern browser icon
+├── apple-touch-icon.png  # iOS home screen (180x180)
+├── icon-192.png          # Android home screen (192x192)
+├── icon-512.png          # High-res Android (512x512)
+├── icon-mask.png         # Safari pinned tab mask
+├── icon.svg              # Vector icon for modern browsers
+└── favicon-html.txt      # HTML integration snippet
 ```
 
-### Option 2: Online Favicon Generators
-
-#### 🥇 **RealFaviconGenerator** (Recommended)
-
-1. Go to <https://realfavicongenerator.net>
-2. Upload your master icon (PNG, JPG, or SVG)
-3. Configure settings:
-   - App name: "Kristoffer Ekstrand"
-   - Background: `#3c2252`
-   - Theme: `#85ff85`
-4. Download the package
-5. Replace files in `/static/` folder
-
-#### 🥈 **Favicon.io**
-
-1. Go to <https://favicon.io>
-2. Choose from:
-   - Upload image
-   - Use text "KE" with your colors
-   - Emoji option
-3. Download and replace files
-
-### Option 3: Custom Design
-
-**Design Principles:**
-
-- Use your brand colors (#3c2252, #85ff85)
-- Keep it simple and recognizable
-- Test on different backgrounds
-- Ensure good contrast
-
-**Recommended Sizes to Create:**
-
-- 16×16px (favicon)
-- 32×32px (favicon)
-- 180×180px (Apple touch)
-- 192×192px (PWA)
-- 512×512px (PWA)
-
-## 🔧 Implementation Steps
-
-### Step 1: Create Your Icons
+### Build Commands
 
 ```bash
-# Example using ImageMagick (if installed)
-cd static
-convert -size 192x192 xc:"#3c2252" \
-  -fill "#85ff85" -pointsize 72 -gravity center -annotate +0+0 "KE" \
-  icon-192x192.png
-
-# Or use online tools and download
+npm run build:fav    # Generate all favicon formats
+npm run build:assets # Includes favicon generation
 ```
 
-### Step 2: Replace Placeholder Files
+### HTML Integration
 
-```bash
-# Replace these files in /static/ with your custom versions:
-favicon.ico
-favicon-16x16.png
-favicon-32x32.png
-apple-touch-icon.png
-icon-192x192.png
-icon-512x512.png
-```
+Generated `favicon-html.txt` provides ready-to-use HTML meta tags for
+integration into the document head.
 
-### Step 3: Build and Deploy
+### Quality Standards
 
-```bash
-npm run build
-git add .
-git commit -m "Update favicons with custom designs"
-git push origin main
-```
+- **Sharp Library**: Optimal image quality and file sizes
+- **Platform Coverage**: All modern favicon requirements
+- **PWA Ready**: Includes manifest icons for progressive web apps
+- **Cross-Platform**: iOS, Android, Windows, macOS support
 
-## 🧪 Testing Your Favicons
-
-### Browser Testing
-
-1. **Chrome/Edge**: Check tab favicon
-2. **Firefox**: Check tab and bookmark favicon
-3. **Safari**: Check tab favicon
-
-### Device Testing
-
-1. **iOS Safari**: Add to home screen, check icon
-2. **Android Chrome**: Install PWA, check icon
-3. **Desktop**: Install PWA, check taskbar/dock icon
-
-### Validation Tools
-
-- **Favicon Checker**: <https://favicomatic.com>
-- **RealFaviconGenerator Test**: Upload your site URL
-- **Browser DevTools**: Check Network tab for favicon requests
-
-## 📋 Favicon Best Practices
-
-### Technical Requirements
-
-- ✅ ICO format for traditional favicon
-- ✅ PNG format for modern browsers
-- ✅ SVG format for scalability
-- ✅ Multiple sizes for different contexts
-- ✅ Proper meta tags in HTML
-
-### Design Guidelines
-
-- 🎨 Use brand colors consistently
-- 📏 Keep designs simple and scalable
-- 🎯 Ensure readability at small sizes
-- 🌈 Test on light and dark backgrounds
-- 📱 Consider touch targets for mobile
-
-### Performance Tips
-
-- 🚀 Optimize file sizes (under 100KB total)
-- ⚡ Use appropriate compression
-- 📦 Combine multiple sizes in ICO file
-- 🔄 Cache favicons properly
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-- **Favicon not showing**: Clear browser cache, hard refresh
-- **Wrong icon displaying**: Check file paths in HTML
-- **iOS not updating**: Delete from home screen, re-add
-- **PWA icon wrong**: Update manifest, reinstall PWA
-
-### Debug Commands
-
-```bash
-# Check if files exist
-curl -I https://kristofferkarlaxelekstrand.github.io/favicon.ico
-
-# Test manifest
-curl https://kristofferkarlaxelekstrand.github.io/site.webmanifest
-```
-
-## 🎯 Gold Standard Checklist
-
-- [x] Traditional favicon.ico (16x16, 32x32)
-- [x] Modern PNG favicons (16x16, 32x32)
-- [x] Apple touch icon (180x180)
-- [x] PWA icons (192x192, 512x512)
-- [x] SVG fallbacks
-- [x] Proper HTML meta tags
-- [x] Updated web manifest
-- [x] Build process integration
-- [ ] **Custom designed icons** (your next step!)
-
-## 🚀 Next Steps
-
-1. **Design custom favicons** using your brand colors
-2. **Replace placeholder files** in `/static/` folder
-3. **Test across devices** and browsers
-4. **Update as needed** based on feedback
-
-Your favicon setup is now **gold standard compliant** - you just need to add
-your custom designs! 🎨✨
+The favicon implementation ensures professional brand presence across all
+platforms while maintaining optimal file sizes and image quality.

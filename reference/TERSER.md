@@ -1,29 +1,53 @@
-# Terser - JavaScript Minification
+# Terser
 
 ## What is Terser?
 
-Terser is a JavaScript parser, mangler, and compressor toolkit for ES6+. It's
-the successor to UglifyJS and is specifically designed to handle modern
-JavaScript syntax.
+Terser is a JavaScript minifier that compresses code by removing whitespace,
+shortening variable names, and eliminating dead code.
 
-## Role in This Project
+## Why Terser?
 
-Terser serves as the final step in the JavaScript build pipeline, minifying
-Babel-transpiled code for production. It removes dead code, simplifies
-expressions, and shortens variable names to reduce file size.
+- **File Size Reduction**: 60-80% smaller JavaScript bundles
+- **Performance**: Faster page loading and parsing
+- **Production Optimization**: Essential for deployment efficiency
+- **Standards Compliance**: Maintains functionality while optimizing
 
-### Key Implementation Details
+## How it's used in this project
 
-- **Package**: `terser@^5.44.0`
-- **Build Script**:
-  `"build:js": "babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env && terser docs/scripts/app.js -o docs/scripts/app.js --compress --mangle"`
-- **Input**: `docs/scripts/app.js` (after Babel transpilation)
-- **Output**: `docs/scripts/app.js` (minified)
-- **Options**: `--compress` (removes dead code) and `--mangle` (shortens names)
+### Pipeline Position
 
-### Project-Specific Benefits
+Terser runs after Babel transpilation as the final optimization step:
 
-- **File Size Reduction**: JavaScript files reduced by ~50% (4KB → 2KB)
-- **Faster Loading**: Improved page performance and Core Web Vitals
-- **Bandwidth Savings**: Less data transfer for users
-- **Production Optimization**: Removes whitespace, comments, and unused code
+```text
+src/scripts/app.js → Babel → Terser → docs/scripts/app.js
+```
+
+### Build Commands
+
+```bash
+npm run build:js      # Production: Babel + Terser minification
+npm run build:js:fast # Development: Babel only (no minification)
+```
+
+### Optimization Settings
+
+- **Compress**: Removes dead code and collapses statements
+- **Mangle**: Shortens variable and function names
+- **Preserves**: Required function signatures and APIs
+
+### Configuration
+
+Integrated via npm scripts with these options:
+
+```bash
+terser docs/scripts/app.js -o docs/scripts/app.js --compress --mangle
+```
+
+### Performance Impact
+
+- **Size Reduction**: Typically 60-80% smaller than unminified code
+- **Load Time**: Significantly faster page loading
+- **Parse Speed**: Faster JavaScript execution
+
+The minification ensures optimal performance for the GitHub Pages deployment
+while maintaining all functionality of the original source code.

@@ -1,187 +1,123 @@
-# Kristoffer Karl Axel Ekstrand
+# Modern GitHub Pages Portfolio
 
-Digital Project Manager, Frontend Developer, UX Designer, and Music Technology
-enthusiast.
+A professional portfolio template with automated builds, optimal performance,
+and free GitHub Pages hosting.
 
-## Live Site
+## Live Demo
 
-[kristofferkarlaxelekstrand.github.io](https://kristofferkarlaxelekstrand.github.io)
+[View the live site →](https://kristofferkarlaxelekstrand.github.io)
 
-## What This Is
+## Quick Start
 
-A **GitHub Pages** portfolio site that automatically deploys from the `main`
-branch. Built with modern web technologies and optimized for performance.
+```bash
+# Use this template
+gh repo create your-username/your-username.github.io --template KristofferKarlAxelEkstrand/kristofferkarlaxelekstrand.github.io --public
 
-## Tech Stack
+# Or fork it
+# Click "Fork" on GitHub
 
-- **Frontend:** Vanilla HTML5, SCSS, ES6+ JavaScript
-- **Build Tools:** Sass, Babel, Terser, HTML Minifier Terser, Sharp (favicons)
-- **Development:** Live server with hot reload
-- **Testing:** Jest with comprehensive test suite
-- **Code Quality:** Prettier, Stylelint
-- **Deployment:** GitHub Pages (automatic via GitHub Actions)
+# Clone and setup
+git clone https://github.com/your-username/your-username.github.io.git
+cd your-username.github.io
+npm install
+npm run dev
+```
+
+## Key Features
+
+- **Free hosting** - GitHub Pages deployment included
+- **Automatic builds** - Push to deploy with GitHub Actions
+- **90+ Lighthouse scores** - Optimized for performance and SEO
+- **Mobile-first responsive** - Works perfectly on all devices
+- **PWA ready** - Installable with offline support
+- **Modern build pipeline** - Sass, Babel, Terser, automated optimization
+
+## How to Customize
+
+Edit these files to make it yours:
+
+1. **`src/index.html`** - Your content, experience, projects
+2. **`src/styles/main.scss`** - Colors, fonts, layout
+3. **`src/assets/logo.png`** - Your logo (512×512px recommended)
+4. **`src/assets/logo.svg`** - SVG version for scalable favicon (optional but
+   recommended)
+
+```bash
+# Start developing
+npm run dev       # Live server + hot reload
+
+# Build for production
+npm run build     # Full build with validation
+```
+
+## Deploy to GitHub Pages
+
+1. **Enable Pages**: Go to your repo → Settings → Pages
+2. **Set source**: Deploy from `/docs` folder on `main` branch
+3. **Push changes**: `git push origin main` triggers automatic deployment
+4. **Visit your site**: `https://your-username.github.io`
+
+[Complete GitHub Pages setup guide →](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+
+## Development Commands
+
+```bash
+# Development
+npm run dev          # Live server + file watching
+npm run watch        # CSS + JS watchers only
+
+# Building
+npm run build        # Full production build
+node build/build-manager.js fast   # Development build (faster)
+
+# Quality & Testing
+npm run test         # Run test suite (80% coverage required)
+npm run validate     # HTML validation + tests
+npm run lint         # Code formatting and style checks
+npm run pretty       # Auto-format all code
+
+# Utilities
+npm run size         # Check build output file sizes
+npm run clean        # Remove build artifacts
+npm run lighthouse   # Performance audit
+```
 
 ## Project Structure
 
 ```text
 ├── src/                 # Source files (edit these)
-│   ├── assets/         # Images and logos
-│   ├── index.html      # Main HTML
+│   ├── index.html      # Your portfolio content
+│   ├── styles/         # SCSS stylesheets
 │   ├── scripts/        # JavaScript
-│   └── styles/         # SCSS styles
-├── static/             # Static files
-│   ├── fav/           # Generated favicons
-│   ├── robots.txt     # SEO
-│   ├── sitemap.xml    # SEO
-│   └── site.webmanifest # PWA manifest
-├── docs/               # Built site (GitHub Pages)
-├── build/              # Build scripts
-├── test/               # Test files
-├── reference/          # Documentation
-└── package.json        # Dependencies & scripts
+│   └── assets/         # Images, logos
+├── docs/               # Built site (auto-generated)
+├── static/             # Static files (robots.txt, etc)
+├── build/              # Build system scripts
+└── test/               # Automated tests
 ```
 
-## Quick Start
+## What's Included
 
-### Prerequisites
+- **Modern tooling** - Sass, Babel, Terser, PostCSS, Sharp
+- **Quality assurance** - Jest tests, HTML validation, Lighthouse audits
+- **Developer experience** - Hot reload, code formatting, comprehensive linting
+- **Production optimization** - Minified CSS/JS/HTML, optimized images, PWA
+  features
+- **Professional favicons** - 9 favicon formats generated from PNG/SVG sources
+  (supports theme switching)
 
-- Node.js (v14+)
-- npm
+## Getting Help
 
-### Setup
-
-```bash
-# Clone and install
-git clone https://github.com/KristofferKarlAxelEkstrand/kristofferkarlaxelekstrand.github.io.git
-cd kristofferkarlaxelekstrand.github.io
-npm install
-
-# Start development
-npm run dev
-```
-
-## Development Workflow
-
-### Edit Files
-
-- **HTML:** `src/index.html`
-- **Styles:** `src/styles/main.scss`
-- **JavaScript:** `src/scripts/app.js`
-- **Assets:** `src/assets/` (images, logos)
-
-### Build & Deploy
-
-```bash
-npm run build    # Build for production
-npm run dev      # Development server with live reload
-npm run test     # Run tests
-npm run pretty   # Format code
-npm run lint     # Run all linters (CSS + Markdown)
-npm run lint:css # Lint SCSS files
-npm run lint:md  # Lint markdown files
-```
-
-### Automatic Deployment
-
-Push to `main` branch → GitHub Actions builds automatically → Deployed to GitHub
-Pages
-
-## Favicon Setup
-
-### Generate Favicons
-
-```bash
-# Add your logo to src/assets/ (logo.png, logo.svg, etc.)
-npm run favicon:build
-```
-
-### What You Need
-
-You can provide either or both:
-
-- **PNG/JPG source:** `src/assets/logo.png` (512×512px minimum) - used to
-  generate all PNG favicon sizes
-- **SVG source:** `src/assets/logo.svg` - used for scalable favicon with theme
-  support
-
-**Recommended:** Provide both PNG and SVG for best results:
-
-- PNG for generating multiple sizes (32×32, 180×180, 192×192, 512×512)
-- SVG for scalable favicon that adapts to light/dark themes
-
-### Output
-
-The build generates 9 professional favicon files:
-
-- `favicon.ico` - Traditional favicon for older browsers
-- `favicon-32x32.png` - Modern favicon for browser tabs
-- `apple-touch-icon.png` - iOS home screen icon (180×180)
-- `icon-192.png` & `icon-512.png` - PWA icons
-- `icon-mask.png` - Maskable PWA icon for Android
-- `icon.svg` - Scalable SVG favicon with theme switching
-- `site.webmanifest` - PWA manifest file
-- `favicon-html.txt` - Ready-to-use HTML meta tags
-
-### Deploy Favicons
-
-```bash
-npm run build
-git add .
-git commit -m "Add favicons"
-git push origin main
-```
-
-## Testing
-
-Run comprehensive tests:
-
-```bash
-npm test
-```
-
-Tests cover:
-
-- HTML structure and accessibility
-- Links and security
-- SEO and meta tags
-- Build pipeline integrity
-- Performance optimization
-
-## Performance
-
-- **Lighthouse Score:** 90+ across all metrics
-- **Build Optimization:** Minified CSS, JS, HTML
-- **Image Optimization:** WebP with fallbacks
-- **Caching:** Service worker for offline support
-
-## Content Focus
-
-- **Adventure Kid Waveforms:** 4,000+ audio files project
-- **Professional Work:** Frontend development and UX design
-- **Music Technology:** Chiptune, waveform generation, audio tools
-- **Personal Projects:** Creative experiments and lab sites
-
-## Key Features
-
-- **Responsive Design** (mobile-first)
-- **Accessibility** (WCAG 2.1 AA compliant)
-- **PWA Ready** (installable, offline support)
-- **SEO Optimized** (proper meta tags, structured data)
-- **Fast Loading** (optimized assets, lazy loading)
-- **Modern Build** (ES6+, SCSS, automated deployment)
-
-## Contributing
-
-This is my personal portfolio, but feel free to:
-
-- Report bugs or suggest improvements
-- Use as inspiration for your own projects
-- Learn from the build setup and optimization techniques
+- **Issues** -
+  [Report bugs or request features](https://github.com/KristofferKarlAxelEkstrand/kristofferkarlaxelekstrand.github.io/issues)
+- **Documentation** - Check `/reference` folder for detailed guides
+- **Examples** - See the live demo for implementation examples
 
 ## License
 
-ISC License - feel free to learn from and adapt this code.
+ISC License - Free to use for personal and commercial projects.
 
 ---
 
-Built by Kristoffer Karl Axel Ekstrand
+Template created by
+[Kristoffer Karl Axel Ekstrand](https://kristofferkarlaxelekstrand.github.io)

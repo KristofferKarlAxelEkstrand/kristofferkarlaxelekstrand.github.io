@@ -1,6 +1,17 @@
 {
+	"extends": ["stylelint-config-standard-scss"],
 	"plugins": ["stylelint-order"],
 	"rules": {
-		"order/properties-alphabetical-order": true
+		"order/properties-alphabetical-order": true,
+		"color-hex-length": "short",
+		"color-no-invalid-hex": true,
+		"declaration-block-no-duplicate-properties": true,
+		"function-url-quotes": "always",
+		"property-no-unknown": true,
+		"selector-max-id": 2,
+		"selector-no-qualifying-type": null,
+		"scss/at-import-partial-extension": null,
+		"scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9-_]+$",
+		"scss/no-global-function-names": null
 	}
 }

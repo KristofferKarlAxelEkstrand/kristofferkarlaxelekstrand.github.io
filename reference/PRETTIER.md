@@ -1,133 +1,54 @@
-# Prettier - Code Formatter
+# Prettier
 
 ## What is Prettier?
 
-Prettier is an opinionated code formatter that enforces consistent code style
-across JavaScript, SCSS, Markdown, and other file types. It automatically
-formats code according to predefined rules, eliminating debates about code style
-and ensuring consistency across the entire project.
+Prettier is an opinionated code formatter that automatically formats code
+according to consistent style rules with zero configuration.
 
-## Role in This Project
+## Why Prettier?
 
-Prettier serves as the automated code formatter, maintaining consistent style
-across all source files including JavaScript, SCSS, and Markdown. It ensures
-clean, readable code without manual formatting effort and helps maintain
-professional code quality standards.
+- **Consistency**: Eliminates style debates and variations
+- **Readability**: Improves code presentation and maintainability
+- **Professional Quality**: Essential for portfolio code standards
+- **Automation**: Removes manual formatting decisions
 
-### Key Implementation Details
+## How it's used in this project
 
-- **Package**: `prettier@^3.6.2`
-- **Configuration**: `.prettierrc` with custom settings and file-specific
-  overrides
-- **Build Script**:
-  `"pretty": "prettier --write \"src/**/*.{js,scss}\" \"*.md\""`
-- **Files Formatted**: JavaScript, SCSS, and Markdown files
-- **Settings**: Single quotes, 4-space tabs, ES5 trailing commas, 1000 character
-  print width
+### Target Files
 
-### Project-Specific Benefits
+- `src/**/*.js` - JavaScript source files
+- `src/**/*.scss` - Sass/SCSS stylesheets
+- `*.md` - Markdown documentation files
 
-- **Consistency**: Uniform formatting across all files in the portfolio project
-- **Readability**: Clean, professional code appearance for maintainability
-- **Maintainability**: Easier to read and understand code during development
-- **Standards**: Enforces industry-standard formatting practices
-- **Automation**: Eliminates manual formatting work in the development workflow
-
-### Configuration Example
-
-```json
-{
-  "singleQuote": true,
-  "trailingComma": "es5",
-  "tabWidth": 4,
-  "semi": true,
-  "useTabs": true,
-  "printWidth": 1000,
-  "proseWrap": "preserve",
-  "overrides": [
-    {
-      "files": "*.md",
-      "options": {
-        "useTabs": false,
-        "tabWidth": 2,
-        "printWidth": 80,
-        "proseWrap": "always"
-      }
-    },
-    {
-      "files": "*.chatmode.md",
-      "options": {
-        "useTabs": false,
-        "tabWidth": 2,
-        "printWidth": 1000,
-        "proseWrap": "preserve"
-      }
-    }
-  ]
-}
-```
-
-### File-Specific Formatting
-
-- **JavaScript/SCSS**: Uses tabs, 4-space width, single quotes, wide print width
-- **Markdown**: Uses spaces, 2-space width, 80-character line length, prose
-  wrapping
-- **Chatmode Files**: Special handling for AI conversation files with preserved
-  prose
-
-## Usage
-
-### Manual Formatting
+### Commands
 
 ```bash
-npm run pretty
-# Formats all JavaScript, SCSS, and Markdown files
+npm run pretty  # Format all supported files
+npm run check   # Includes Prettier in pre-commit validation
 ```
 
-### Check Mode (No Changes)
+### Formatting Rules
 
-```bash
-npx prettier --check "src/**/*.{js,scss}" "*.md"
-# Checks formatting without making changes
-```
+Project uses custom `.prettierrc` configuration:
 
-## Integration with Other Tools
+- **Indentation**: 4 spaces (tabs for most files)
+- **Quotes**: Single quotes for strings
+- **Semicolons**: Always included
+- **Trailing Commas**: ES5-compatible locations
+- **Line Width**: 1000 characters (no wrapping)
+- **Markdown**: Special handling (2 spaces, 80 char width, always wrap)
 
-### With Git Workflow
+### Workflow Integration
 
-```bash
-# Format code before committing
-npm run pretty
-git add .
-git commit -m "Format code with Prettier"
-```
+- **Pre-commit**: Part of `npm run check` validation
+- **Quality Assurance**: Combined with Stylelint and Markdownlint
+- **Development**: Run manually when needed for cleanup
 
-### With Development Tools
+### Configuration
 
-- **VS Code**: Prettier extension for automatic formatting
-- **Command Line**: npm script for batch formatting
-- **CI/CD**: Can validate formatting in automated builds
+Uses custom `.prettierrc` configuration instead of defaults. The configuration
+includes special overrides for Markdown files to ensure proper documentation
+formatting with appropriate line wrapping.
 
-## Best Practices
-
-### Regular Formatting
-
-```bash
-# Format before major commits
-npm run pretty
-
-# Check formatting status
-npx prettier --check "src/**/*.{js,scss}" "*.md"
-```
-
-### Configuration Consistency
-
-- Keep `.prettierrc` settings stable
-- Document any configuration changes
-- Ensure team uses same Prettier version
-
----
-
-Prettier ensures consistent, professional code formatting across the entire
-project, eliminating manual formatting work and maintaining high code quality
-standards automatically.
+Maintains professional code quality standards essential for a portfolio where
+code presentation is as important as functionality.

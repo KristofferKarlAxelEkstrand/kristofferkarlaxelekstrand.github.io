@@ -171,7 +171,7 @@ class FaviconGenerator {
 
 	processSVG(svgPath) {
 		if (!svgPath || !fs.existsSync(svgPath)) {
-			console.log('\x1b[43m\x1b[30m INFO \x1b[0m No SVG found, creating placeholder...');
+			console.log('\x1b[43m\x1b[30m  INFO \x1b[0m No SVG found, creating placeholder...');
 			this.createPlaceholderSVG();
 			return;
 		}
@@ -300,7 +300,7 @@ class FaviconGenerator {
 
 	showSetupInstructions() {
 		console.log(`
-\x1b[43m\x1b[30m INFO \x1b[0m SETUP REQUIRED
+\x1b[43m\x1b[30m  INFO \x1b[0m SETUP REQUIRED
 
 Add your logo files to: src/assets/
 
@@ -318,9 +318,9 @@ Then run: npm run favicon:build
 
 	showSuccess() {
 		console.log(`
-\x1b[42m\x1b[30m SUCCESS \x1b[0m Favicon generation complete!
+\x1b[42m\x1b[30mSUCCESS\x1b[0m Favicon generation complete!
 
-\x1b[43m\x1b[30m INFO \x1b[0m Files created in: docs/
+\x1b[43m\x1b[30m  INFO \x1b[0m Files created in: docs/
 
   [OK] 9 professional favicon files generated
   [OK] PWA manifest with proper configuration
@@ -328,7 +328,7 @@ Then run: npm run favicon:build
   [OK] Maskable icons for Android compatibility
   [OK] Cross-platform compatibility
 
-\x1b[43m\x1b[30m INFO \x1b[0m NEXT STEPS:
+\x1b[43m\x1b[30m  INFO \x1b[0m NEXT STEPS:
 1. Copy favicon-html.txt content to your HTML <head>
 2. Test with Chrome DevTools → Application → Manifest
 

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -8,6 +8,8 @@
 		<!-- Preload critical resources -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 		<link rel="preload" href="styles/main.css" as="style">
 
 		<!-- Fonts -->
@@ -16,19 +18,22 @@
 
 		<!-- Meta tags -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'">
 		<meta name="description" content="Digital Project Manager & Frontend Developer in Stockholm. 20+ years in digital products. Shopify, e-commerce, UX design, visual design & sound.">
 		<meta name="author" content="Kristoffer Karl Axel Ekstrand">
 		<meta name="keywords" content="Digital Project Manager Stockholm, Frontend Developer Sweden, Shopify Developer, UX Designer, Music Technology, Adventure Kid Waveforms, React Developer, JavaScript Developer, E-commerce Stockholm, Web Audio API">
+		<meta name="robots" content="index, follow">
+		<meta name="googlebot" content="index, follow">
 
 		<!-- Theme and branding -->
 		<meta name="theme-color" content="#3c2252">
 		<link rel="canonical" href="https://kristofferkarlaxelekstrand.github.io/">
 
 		<!-- Gold Standard Favicon 2025 - Organized Structure -->
-		<link rel="icon" href="/fav/favicon.ico" sizes="32x32">
-		<link rel="icon" href="/fav/icon.svg" type="image/svg+xml">
-		<link rel="apple-touch-icon" href="/fav/apple-touch-icon.png">
-		<link rel="manifest" href="/fav/site.webmanifest">
+		<link rel="icon" href="/favicon.ico" sizes="32x32">
+		<link rel="icon" href="/icon.svg" type="image/svg+xml">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="manifest" href="/site.webmanifest">
 
 		<!-- PWA theme support -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,17 +44,17 @@
 		<meta property="og:url" content="https://kristofferkarlaxelekstrand.github.io/">
 		<meta property="og:title" content="Kristoffer Ekstrand - Digital Project Manager & Frontend Developer">
 		<meta property="og:description" content="Digital Project Manager & Frontend Developer in Stockholm. Specializing in Shopify development, UX design, and music technology. Creator of Adventure Kid Waveforms.">
-		<meta property="og:image" content="https://kristofferkarlaxelekstrand.github.io/images/og-image.jpg">
-		<meta property="og:image:width" content="1200">
-		<meta property="og:image:height" content="630">
+		<meta property="og:image" content="https://kristofferkarlaxelekstrand.github.io/icon-512.png">
+		<meta property="og:image:width" content="512">
+		<meta property="og:image:height" content="512">
 		<meta property="og:site_name" content="Kristoffer Ekstrand Portfolio">
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content="https://kristofferkarlaxelekstrand.github.io/">
 		<meta property="twitter:title" content="Kristoffer Ekstrand - Digital Project Manager & Frontend Developer">
-		<meta property="twitter:description" content="Digital Project Manager & Frontend Developer in Stockholm. Specializing in Shopify development, UX design, and music technology.">
-		<meta property="twitter:image" content="https://kristofferkarlaxelekstrand.github.io/images/og-image.jpg">
+		<meta property="twitter:description" content="Digital Project Manager &amp; Frontend Developer in Stockholm. Specializing in Shopify development, UX design, and music technology.">
+		<meta property="twitter:image" content="https://kristofferkarlaxelekstrand.github.io/icon-512.png">
 
 		<!-- Stylesheet -->
 		<link href="styles/main.css" rel="stylesheet">
@@ -67,7 +72,7 @@
 						"@id": "https://kristofferkarlaxelekstrand.github.io/#website",
 						"url": "https://kristofferkarlaxelekstrand.github.io/",
 						"name": "Kristoffer Ekstrand Portfolio",
-						"description": "Digital Project Manager & Frontend Developer portfolio showcasing 20+ years of expertise in Stockholm",
+						"description": "Simple list of workplaces and projects.",
 						"publisher": {
 							"@id": "https://kristofferkarlaxelekstrand.github.io/#person"
 						},
@@ -78,10 +83,20 @@
 						"name": "Kristoffer Karl Axel Ekstrand",
 						"alternateName": "Kristoffer Ekstrand",
 						"jobTitle": "Digital Project Manager",
-						"description": "Frontend Developer, UX Designer, and Music Technology Specialist with 20+ years experience in Stockholm",
+						"description": "Digital Project Manager, Frontend Developer, UX Designer",
 						"url": "https://kristofferkarlaxelekstrand.github.io/",
 						"email": "toffe@kristofferekstrand.se",
 						"sameAs": ["https://www.linkedin.com/in/kristofferekstrand/", "https://github.com/KristofferKarlAxelEkstrand"]
+					}, {
+						"@type": "BreadcrumbList",
+						"itemListElement": [
+							{
+								"@type": "ListItem",
+								"position": 1,
+								"name": "Home",
+								"item": "https://kristofferkarlaxelekstrand.github.io/"
+							}
+						]
 					}
 				]
 			}
@@ -256,7 +271,7 @@
 				</article>
 				<article>
 					<h4>Litium AB</h4>
-					<p class="role">Art Director & UI Designer</p>
+					<p class="role">Art Director &amp; UI Designer</p>
 					<p>
 						<a href="https://www.litium.se" target="_blank" rel="noopener noreferrer">litium.se</a>
 					</p>
@@ -267,7 +282,7 @@
 				</article>
 				<article>
 					<h4>Sparkling Group AB</h4>
-					<p class="role">Graphic Designer & Art Director</p>
+					<p class="role">Graphic Designer &amp; Art Director</p>
 					<p>
 						<span>sparkling.se</span>
 						<em>(archived)</em>

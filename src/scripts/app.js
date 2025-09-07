@@ -110,8 +110,8 @@ function showDateNotification() {
 			if (Notification.permission === 'granted') {
 				new Notification("Kristoffer's Portfolio", {
 					body: messages[today],
-					icon: '/fav/icon-192.png',
-					badge: '/fav/icon-192.png',
+					icon: '/icon-192.png',
+					badge: '/icon-192.png',
 				});
 			} else if (Notification.permission !== 'denied') {
 				// Ask for permission
@@ -119,8 +119,8 @@ function showDateNotification() {
 					if (permission === 'granted') {
 						new Notification("Kristoffer's Portfolio", {
 							body: messages[today],
-							icon: '/fav/icon-192.png',
-							badge: '/fav/icon-192.png',
+							icon: '/icon-192.png',
+							badge: '/icon-192.png',
 						});
 					}
 				});

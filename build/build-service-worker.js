@@ -40,7 +40,7 @@ function updateServiceWorkerCache() {
 	// Write the updated service worker
 	fs.writeFileSync(destPath, swContent, 'utf8');
 
-	console.log(`✅ Service worker updated:`);
+	console.log(`\x1b[42m\x1b[30m SUCCESS \x1b[0m Service worker updated:`);
 	console.log(`   Cache name: ${newCacheName}`);
 	console.log(`   File: ${destPath}`);
 	console.log(`   Size: ${(swContent.length / 1024).toFixed(1)} KB`);
@@ -52,10 +52,10 @@ function updateServiceWorkerCache() {
 if (require.main === module) {
 	try {
 		const cacheName = updateServiceWorkerCache();
-		console.log(`\n🚀 Service worker ready for deployment!`);
+		console.log(`\n\x1b[46m\x1b[30m READY \x1b[0m Service worker ready for deployment!`);
 		console.log(`   New cache will invalidate old caches automatically`);
 	} catch (error) {
-		console.error('❌ Failed to update service worker:', error.message);
+		console.error('\x1b[41m\x1b[37m ERROR \x1b[0m Failed to update service worker:', error.message);
 		process.exit(1);
 	}
 }
