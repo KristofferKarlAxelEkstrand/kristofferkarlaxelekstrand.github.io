@@ -169,13 +169,15 @@ npm run pretty       # Code formatting
 
 ### Performance Monitoring
 
-The build system includes comprehensive performance monitoring and optimization insights:
+The build system includes comprehensive performance monitoring and optimization
+insights:
 
 #### Build Performance Report
 
 Every build generates a detailed performance report showing:
 
-- **Step-by-step timing**: Duration and percentage of total build time for each step
+- **Step-by-step timing**: Duration and percentage of total build time for each
+  step
 - **Bottleneck identification**: Highlights the slowest build steps
 - **Compression metrics**: Before/after file sizes with compression ratios
 - **Size budget analysis**: Compares output sizes against defined budgets
@@ -214,10 +216,12 @@ node build/build-history.js all
 
 #### Performance Optimization Features
 
-- **File compression tracking**: Real-time compression ratios for CSS, JS, and HTML
+- **File compression tracking**: Real-time compression ratios for CSS, JS, and
+  HTML
 - **PNG optimization**: Automatic PNG compression with size reporting
 - **SVG optimization**: Static SVG file optimization with size reduction metrics
-- **Build timing analysis**: Identifies slow steps for optimization opportunities
+- **Build timing analysis**: Identifies slow steps for optimization
+  opportunities
 
 - Lighthouse integration
 - Core Web Vitals tracking
