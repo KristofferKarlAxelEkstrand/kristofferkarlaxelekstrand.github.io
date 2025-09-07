@@ -2,9 +2,7 @@
 
 ## What is Sharp?
 
-Sharp is a high-performance Node.js image processing library built on libvips.
-It provides fast, memory-efficient image resizing, format conversion, and
-optimization capabilities.
+Sharp is a high-performance Node.js image processing library built on libvips. It provides fast, memory-efficient image resizing, format conversion, and optimization capabilities.
 
 ## Why Sharp?
 
@@ -25,8 +23,7 @@ Sharp handles two critical image optimization tasks:
 
 ### PNG Optimization
 
-Automatically optimizes PNG files in `src/assets/` with intelligent compression
-strategies:
+Automatically optimizes PNG files in `src/assets/` with intelligent compression strategies:
 
 ```bash
 npm run png:optimize  # Standalone PNG optimization
@@ -36,7 +33,7 @@ npm run build         # Includes PNG optimization in full build
 **Optimization Strategies:**
 
 - **Aggressive**: Large files >100KB - Quality 85, palette compression
-- **Balanced**: Medium files >20KB - Quality 90, standard compression
+- **Balanced**: Medium files >20KB - Quality 90, standard compression  
 - **Conservative**: Small files/icons - Quality 95, minimal compression
 
 **Key Features:**
@@ -62,7 +59,7 @@ node build/build-favicons-sharp.js
 **Generated Formats:**
 
 - `favicon.ico` - Classic 16x16 browser icon
-- `favicon-32x32.png` - Modern browser icon
+- `favicon-32x32.png` - Modern browser icon  
 - `apple-touch-icon.png` - iOS home screen (180x180)
 - `icon-192.png` - Android home screen (192x192)
 - `icon-512.png` - High-res Android (512x512)
@@ -137,11 +134,11 @@ await sharp(inputFile)
     compressionLevel: 9,
     progressive: false,
     palette: true,
-    colours: 256,
+    colours: 256
   })
   .toFile(outputFile);
 
-// Favicon resizing example
+// Favicon resizing example  
 await sharp(sourceFile)
   .resize(192, 192)
   .png(getFaviconPNGSettings(metadata))
@@ -210,5 +207,4 @@ npm run png:optimize
 npm run build --verbose
 ```
 
-Sharp provides the foundation for professional image optimization in this build
-system, ensuring optimal performance and quality across all image assets.
+Sharp provides the foundation for professional image optimization in this build system, ensuring optimal performance and quality across all image assets.

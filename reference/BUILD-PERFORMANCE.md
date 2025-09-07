@@ -2,9 +2,7 @@
 
 ## What is Build Performance Monitoring?
 
-Build performance monitoring tracks build execution times, file sizes,
-compression ratios, and optimization effectiveness to identify bottlenecks and
-measure optimization success.
+Build performance monitoring tracks build execution times, file sizes, compression ratios, and optimization effectiveness to identify bottlenecks and measure optimization success.
 
 ## Why Monitor Build Performance?
 
@@ -18,13 +16,11 @@ measure optimization success.
 
 ### Automatic Monitoring
 
-All builds automatically track performance metrics and generate detailed reports
-showing step-by-step timing, file sizes, and compression achievements.
+All builds automatically track performance metrics and generate detailed reports showing step-by-step timing, file sizes, and compression achievements.
 
 ### Build History
 
-Performance data is automatically saved to `.build-history.json` for trend
-analysis and regression detection.
+Performance data is automatically saved to `.build-history.json` for trend analysis and regression detection.
 
 ### Performance Reports
 
@@ -313,6 +309,4 @@ npm run svg:optimize
 - Maintain build history for trend analysis
 - Document performance expectations
 
-The build performance monitoring system provides comprehensive insights into
-build efficiency, helping maintain optimal performance while preventing
-regressions and identifying optimization opportunities.
+The build performance monitoring system provides comprehensive insights into build efficiency, helping maintain optimal performance while preventing regressions and identifying optimization opportunities.
