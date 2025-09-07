@@ -139,6 +139,11 @@ class PNGOptimizer {
 		const isHighRes = width > 512 || height > 512;
 		const hasAlpha = channels === 4;
 
+		// Configurable progressive setting: defaults to false for better compression
+		// Progressive PNGs can improve perceived loading for large images but may increase file size
+		// Set PNG_PROGRESSIVE=true environment variable to enable progressive encoding
+		const useProgressive = process.env.PNG_PROGRESSIVE === 'true';
+
 		// Strategy 1: High compression for large files
 		if (isLarge) {
 			return {
@@ -146,7 +151,7 @@ class PNGOptimizer {
 				png: {
 					quality: 85,
 					compressionLevel: 9,
-					progressive: false,
+					progressive: useProgressive, // Configurable: false by default for max compression
 					palette: !hasAlpha, // Don't use palette with transparency
 					colours: hasAlpha ? 256 : 128,
 					effort: 10
@@ -161,7 +166,7 @@ class PNGOptimizer {
 				png: {
 					quality: 90,
 					compressionLevel: 9,
-					progressive: false,
+					progressive: useProgressive, // Configurable: false by default for max compression
 					palette: !hasAlpha,
 					colours: 256,
 					effort: 8
@@ -175,7 +180,7 @@ class PNGOptimizer {
 			png: {
 				quality: 95,
 				compressionLevel: 9,
-				progressive: false,
+				progressive: useProgressive, // Configurable: false by default for max compression
 				palette: !hasAlpha && pixels < 10000, // Only for very small images
 				colours: 256,
 				effort: 6
