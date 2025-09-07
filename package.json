@@ -15,6 +15,7 @@
 		"validate": "npm run validate-html && npm run test",
 		"validate-html": "html-validate docs/*.html",
 		"clean": "rm -rf docs/styles docs/scripts docs/index.html docs/robots.txt docs/sitemap.xml docs/site.webmanifest docs/favicon.ico docs/apple-touch-icon.png docs/favicon-32x32.png docs/icon-192.png docs/icon-512.png docs/icon-mask.png docs/icon.svg docs/favicon-html.txt docs/sw.js",
+		"png:optimize": "node build/build-png-optimizer.js",
 		"svg:optimize": "node build/build-svg-optimizer.js",
 		"lint": "stylelint **/*.scss --fix && markdownlint *.md reference/*.md --fix",
 		"pretty": "prettier --write \"src/**/*.{js,scss}\" \"*.md\"",
