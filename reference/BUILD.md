@@ -1,21 +1,26 @@
 # Build System
 
-The build system is a custom Node.js pipeline that transforms source files into optimized production assets for GitHub Pages deployment.
+The build system is a custom Node.js pipeline that transforms source files into
+optimized production assets for GitHub Pages deployment.
 
 ## What It Does
 
-Converts source files in `src/` into optimized production files in `docs/` with automated validation, compression, and performance optimization.
+Converts source files in `src/` into optimized production files in `docs/` with
+automated validation, compression, and performance optimization.
 
 ## Why This Approach
 
-- **GitHub Pages compatibility**: Outputs to `/docs` directory for automatic deployment
+- **GitHub Pages compatibility**: Outputs to `/docs` directory for automatic
+  deployment
 - **Performance focus**: Aggressive optimization for 90+ Lighthouse scores
 - **Build validation**: Prevents broken deployments with automated testing
-- **Development speed**: Fast builds for development, full optimization for production
+- **Development speed**: Fast builds for development, full optimization for
+  production
 
 ## Build Manager
 
-The core build orchestrator is `build/build-manager.js` which coordinates all build steps.
+The core build orchestrator is `build/build-manager.js` which coordinates all
+build steps.
 
 ### Build Types
 
@@ -72,7 +77,8 @@ The core build orchestrator is `build/build-manager.js` which coordinates all bu
 - Optimizes PNG files using Sharp
 - Smart compression strategies based on file size
 - Preserves originals if optimization doesn't help
-- Configurable progressive encoding via `PNG_PROGRESSIVE=true` environment variable
+- Configurable progressive encoding via `PNG_PROGRESSIVE=true` environment
+  variable
 - Centralized palette compression logic via `getPaletteSettings()` helper method
 
 **`build/build-favicons-sharp.js`**
@@ -239,7 +245,8 @@ docs/
 - SVGO vector optimization
 - WebP format consideration
 - Responsive image sizing
-- Configurable progressive PNG encoding (disabled by default for maximum compression)
+- Configurable progressive PNG encoding (disabled by default for maximum
+  compression)
 
 ### HTML Optimizations
 
@@ -282,4 +289,5 @@ npm run validate          # Full validation suite
 npm run size              # File size analysis
 ```
 
-This build system ensures reliable, optimized, and validated deployments while maintaining fast development iteration cycles.
+This build system ensures reliable, optimized, and validated deployments while
+maintaining fast development iteration cycles.
