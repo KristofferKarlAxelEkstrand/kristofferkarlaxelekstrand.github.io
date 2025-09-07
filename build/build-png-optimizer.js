@@ -146,14 +146,15 @@ class PNGOptimizer {
 
 		// Strategy 1: High compression for large files
 		if (isLarge) {
+			const { palette, colours } = this.getPaletteSettings('aggressive', hasAlpha, pixels);
 			return {
 				strategy: 'aggressive',
 				png: {
 					quality: 85,
 					compressionLevel: 9,
 					progressive: useProgressive, // Configurable: false by default for max compression
-					palette: !hasAlpha, // Don't use palette with transparency
-					colours: hasAlpha ? 256 : 128,
+					palette,
+					colours,
 					effort: 10
 				}
 			};
@@ -161,31 +162,75 @@ class PNGOptimizer {
 
 		// Strategy 2: Balanced for medium files
 		if (fileSize > 20 * 1024) {
+			const { palette, colours } = this.getPaletteSettings('balanced', hasAlpha, pixels);
 			return {
 				strategy: 'balanced',
 				png: {
 					quality: 90,
 					compressionLevel: 9,
 					progressive: useProgressive, // Configurable: false by default for max compression
-					palette: !hasAlpha,
-					colours: 256,
+					palette,
+					colours,
 					effort: 8
 				}
 			};
 		}
 
 		// Strategy 3: Conservative for small files/icons
+		const { palette, colours } = this.getPaletteSettings('conservative', hasAlpha, pixels);
 		return {
 			strategy: 'conservative',
 			png: {
 				quality: 95,
 				compressionLevel: 9,
 				progressive: useProgressive, // Configurable: false by default for max compression
-				palette: !hasAlpha && pixels < 10000, // Only for very small images
-				colours: 256,
+				palette,
+				colours,
 				effort: 6
 			}
 		};
+	}
+
+	/**
+	 * Get palette and color settings based on optimization strategy
+	 * @param {string} strategy - 'aggressive', 'balanced', or 'conservative'
+	 * @param {boolean} hasAlpha - Whether the image has an alpha channel
+	 * @param {number} pixels - Total number of pixels in the image
+	 * @returns {Object} - { palette: boolean, colours: number }
+	 */
+	getPaletteSettings(strategy, hasAlpha, pixels) {
+		// Palette compression doesn't work well with transparency
+		const basePaletteEnabled = !hasAlpha;
+
+		switch (strategy) {
+			case 'aggressive':
+				// Aggressive: Use palette when possible, fewer colors for better compression
+				return {
+					palette: basePaletteEnabled,
+					colours: hasAlpha ? 256 : 128
+				};
+
+			case 'balanced':
+				// Balanced: Use palette when possible, standard color count
+				return {
+					palette: basePaletteEnabled,
+					colours: 256
+				};
+
+			case 'conservative':
+				// Conservative: Only use palette for very small images, standard colors
+				return {
+					palette: basePaletteEnabled && pixels < 10000,
+					colours: 256
+				};
+
+			default:
+				// Fallback to balanced settings
+				return {
+					palette: basePaletteEnabled,
+					colours: 256
+				};
+		}
 	}
 
 	showResults() {

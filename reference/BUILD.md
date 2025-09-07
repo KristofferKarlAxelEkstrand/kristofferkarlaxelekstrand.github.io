@@ -73,6 +73,7 @@ The core build orchestrator is `build/build-manager.js` which coordinates all bu
 - Smart compression strategies based on file size
 - Preserves originals if optimization doesn't help
 - Configurable progressive encoding via `PNG_PROGRESSIVE=true` environment variable
+- Centralized palette compression logic via `getPaletteSettings()` helper method
 
 **`build/build-favicons-sharp.js`**
 
