@@ -22,28 +22,28 @@ function getPaletteSettings(strategy, hasAlpha, pixels) {
 			// Aggressive: Use palette when possible, fewer colors for better compression
 			return {
 				palette: basePaletteEnabled,
-				colours: hasAlpha ? 256 : 128
+				colours: hasAlpha ? 256 : 128,
 			};
 
 		case 'balanced':
 			// Balanced: Use palette when possible, standard color count
 			return {
 				palette: basePaletteEnabled,
-				colours: 256
+				colours: 256,
 			};
 
 		case 'conservative':
 			// Conservative: Only use palette for very small images, standard colors
 			return {
 				palette: basePaletteEnabled && pixels < 10000,
-				colours: 256
+				colours: 256,
 			};
 
 		default:
 			// Fallback to balanced settings
 			return {
 				palette: basePaletteEnabled,
-				colours: 256
+				colours: 256,
 			};
 	}
 }
@@ -62,16 +62,16 @@ function getFaviconPNGSettings(metadata) {
 	const { palette, colours } = getPaletteSettings('conservative', hasAlpha, pixels);
 
 	return {
-		quality: 95,           // Slightly lower quality for better compression
-		compressionLevel: 9,   // Maximum compression
+		quality: 95, // Slightly lower quality for better compression
+		compressionLevel: 9, // Maximum compression
 		progressive: process.env.PNG_PROGRESSIVE === 'true', // Configurable: false by default for max compression
-		palette,               // Use palette compression when beneficial (not with transparency)
-		colours,               // Limit colors for better compression
-		effort: 10            // Maximum optimization effort
+		palette, // Use palette compression when beneficial (not with transparency)
+		colours, // Limit colors for better compression
+		effort: 10, // Maximum optimization effort
 	};
 }
 
 module.exports = {
 	getPaletteSettings,
-	getFaviconPNGSettings
+	getFaviconPNGSettings,
 };

@@ -7,7 +7,7 @@ const { getPaletteSettings } = require('./build-png-utils');
 
 /**
  * PNG Optimizer using Sharp
- * 
+ *
  * Optimizes PNG files with smart compression settings
  * Based on file size and content analysis
  */
@@ -17,12 +17,12 @@ class PNGOptimizer {
 		this.inputDir = path.resolve('src/assets');
 		this.outputDir = path.resolve('src/assets');
 		this.tempDir = path.resolve('build/temp');
-		
+
 		this.stats = {
 			processed: 0,
 			totalOriginal: 0,
 			totalOptimized: 0,
-			savings: 0
+			savings: 0,
 		};
 	}
 
@@ -36,7 +36,7 @@ class PNGOptimizer {
 			}
 
 			const pngFiles = this.findPNGFiles();
-			
+
 			if (pngFiles.length === 0) {
 				console.log('\x1b[43m\x1b[30m INFO \x1b[0m No PNG files found to optimize');
 				return;
@@ -50,7 +50,6 @@ class PNGOptimizer {
 
 			this.showResults();
 			this.cleanup();
-
 		} catch (error) {
 			console.error('\x1b[41m\x1b[37m ERROR \x1b[0m', error.message);
 			this.cleanup();
@@ -63,9 +62,10 @@ class PNGOptimizer {
 			return [];
 		}
 
-		const files = fs.readdirSync(this.inputDir)
-			.filter(file => file.toLowerCase().endsWith('.png'))
-			.map(file => path.join(this.inputDir, file));
+		const files = fs
+			.readdirSync(this.inputDir)
+			.filter((file) => file.toLowerCase().endsWith('.png'))
+			.map((file) => path.join(this.inputDir, file));
 
 		return files;
 	}
@@ -73,7 +73,7 @@ class PNGOptimizer {
 	async optimizePNG(filePath) {
 		const fileName = path.basename(filePath);
 		const tempPath = path.join(this.tempDir, `optimized_${fileName}`);
-		
+
 		try {
 			// Get original file stats
 			const originalStats = fs.statSync(filePath);
@@ -85,16 +85,14 @@ class PNGOptimizer {
 			// Analyze image to determine best optimization strategy
 			const image = sharp(filePath);
 			const metadata = await image.metadata();
-			
+
 			// Choose optimization settings based on image characteristics
 			const settings = this.getOptimizationSettings(metadata, originalSize);
-			
+
 			console.log(`    Strategy: ${settings.strategy} (${metadata.width}×${metadata.height}, ${metadata.channels} channels)`);
 
 			// Apply optimization
-			await image
-				.png(settings.png)
-				.toFile(tempPath);
+			await image.png(settings.png).toFile(tempPath);
 
 			// Check if optimization was beneficial
 			const optimizedStats = fs.statSync(tempPath);
@@ -106,9 +104,9 @@ class PNGOptimizer {
 			if (optimizedSize < originalSize && savings > 1024) {
 				// Optimization was beneficial, replace original
 				fs.copyFileSync(tempPath, filePath);
-				
+
 				console.log(`  \x1b[42m\x1b[30m DONE \x1b[0m ${fileName} → ${optimizedSizeKB}KB (-${savingsPercent}%)`);
-				
+
 				this.stats.processed++;
 				this.stats.totalOriginal += originalSize;
 				this.stats.totalOptimized += optimizedSize;
@@ -122,10 +120,9 @@ class PNGOptimizer {
 			if (fs.existsSync(tempPath)) {
 				fs.unlinkSync(tempPath);
 			}
-
 		} catch (error) {
 			console.error(`  \x1b[41m\x1b[37m ERROR \x1b[0m ${fileName}: ${error.message}`);
-			
+
 			// Clean up temp file on error
 			if (fs.existsSync(tempPath)) {
 				fs.unlinkSync(tempPath);
@@ -156,8 +153,8 @@ class PNGOptimizer {
 					progressive: useProgressive, // Configurable: false by default for max compression
 					palette,
 					colours,
-					effort: 10
-				}
+					effort: 10,
+				},
 			};
 		}
 
@@ -172,8 +169,8 @@ class PNGOptimizer {
 					progressive: useProgressive, // Configurable: false by default for max compression
 					palette,
 					colours,
-					effort: 8
-				}
+					effort: 8,
+				},
 			};
 		}
 
@@ -187,8 +184,8 @@ class PNGOptimizer {
 				progressive: useProgressive, // Configurable: false by default for max compression
 				palette,
 				colours,
-				effort: 6
-			}
+				effort: 6,
+			},
 		};
 	}
 
@@ -205,7 +202,7 @@ class PNGOptimizer {
 
 	showResults() {
 		console.log('\n\x1b[44m\x1b[37m BUILD \x1b[0m Optimization Results:');
-		
+
 		if (this.stats.processed === 0) {
 			console.log('  No files were optimized (all already optimal)');
 			return;
@@ -226,7 +223,7 @@ class PNGOptimizer {
 		// Remove temp directory
 		if (fs.existsSync(this.tempDir)) {
 			const files = fs.readdirSync(this.tempDir);
-			files.forEach(file => {
+			files.forEach((file) => {
 				fs.unlinkSync(path.join(this.tempDir, file));
 			});
 			fs.rmdirSync(this.tempDir);
