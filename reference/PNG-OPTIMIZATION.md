@@ -2,7 +2,9 @@
 
 ## What is PNG Optimization?
 
-PNG optimization is the process of reducing PNG file sizes while maintaining visual quality through advanced compression techniques, color palette optimization, and format-specific optimizations.
+PNG optimization is the process of reducing PNG file sizes while maintaining
+visual quality through advanced compression techniques, color palette
+optimization, and format-specific optimizations.
 
 ## Why PNG Optimization?
 
@@ -15,7 +17,8 @@ PNG optimization is the process of reducing PNG file sizes while maintaining vis
 
 ### Automated Optimization
 
-PNG files in `src/assets/` are automatically optimized during the build process using Sharp image processing library.
+PNG files in `src/assets/` are automatically optimized during the build process
+using Sharp image processing library.
 
 ### Build Integration
 
@@ -26,7 +29,8 @@ npm run build         # Includes PNG optimization in full build
 
 ### Optimization Process
 
-The optimizer analyzes each PNG file and selects the optimal compression strategy based on:
+The optimizer analyzes each PNG file and selects the optimal compression
+strategy based on:
 
 - File size (large >100KB, medium >20KB, small <20KB)
 - Image dimensions (high-resolution vs standard)
@@ -103,7 +107,7 @@ await sharp(inputFile)
     progressive: useProgressive,
     palette: settings.palette,
     colours: settings.colours,
-    effort: settings.effort
+    effort: settings.effort,
   })
   .toFile(outputFile);
 ```
@@ -287,4 +291,6 @@ npm run build
 npm run size
 ```
 
-The PNG optimization system ensures optimal file sizes while maintaining visual quality, contributing to the portfolio's excellent performance scores and fast loading times.
+The PNG optimization system ensures optimal file sizes while maintaining visual
+quality, contributing to the portfolio's excellent performance scores and fast
+loading times.
