@@ -16,13 +16,16 @@ const SIZE_BUDGETS = {
 	HTML: 50 * 1024, // 50KB
 };
 
+// Favicon file paths for monitoring
+const FAVICON_FILES = ['docs/apple-touch-icon.png', 'docs/favicon-32x32.png', 'docs/icon-192.png', 'docs/icon-512.png'];
+
 // Build metrics storage
 const buildMetrics = {
 	startTime: Date.now(),
 	steps: [],
 	totalSize: { before: 0, after: 0 },
 	warnings: [],
-	buildType: 'unknown',
+	buildType: 'unspecified',
 };
 
 /**
@@ -95,8 +98,8 @@ function run(name, command, silent = false) {
 		JS: ['docs/scripts/app.js'],
 		'JS Minify': ['docs/scripts/app.js'],
 		HTML: ['docs/index.html'],
-		'PNG Optimize': ['docs/apple-touch-icon.png', 'docs/favicon-32x32.png', 'docs/icon-192.png', 'docs/icon-512.png'],
-		Favicons: ['docs/apple-touch-icon.png', 'docs/favicon-32x32.png', 'docs/icon-192.png', 'docs/icon-512.png'],
+		'PNG Optimize': FAVICON_FILES,
+		Favicons: FAVICON_FILES,
 	};
 
 	if (sizeMonitoredSteps[name]) {
@@ -176,7 +179,7 @@ function saveBuildHistory(buildData) {
 			history = JSON.parse(fs.readFileSync(historyFile, 'utf8'));
 		}
 	} catch {
-		// Start with empty history if file doesn't exist or contains invalid JSON
+		// Start with empty history if JSON parsing fails
 		history = [];
 	}
 
