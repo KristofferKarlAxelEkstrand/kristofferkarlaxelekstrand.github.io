@@ -34,7 +34,7 @@ const buildMetrics = {
 function getFileSize(filePath) {
 	try {
 		return fs.statSync(filePath).size;
-	} catch {
+	} catch (error) {
 		return 0;
 	}
 }
@@ -55,7 +55,7 @@ function getDirectorySize(dirPath) {
 				totalSize += stat.size;
 			}
 		}
-	} catch {
+	} catch (error) {
 		// Directory doesn't exist or can't be read
 	}
 	return totalSize;
@@ -178,7 +178,7 @@ function saveBuildHistory(buildData) {
 		if (fs.existsSync(historyFile)) {
 			history = JSON.parse(fs.readFileSync(historyFile, 'utf8'));
 		}
-	} catch {
+	} catch (error) {
 		// Start with empty history if JSON parsing fails
 		history = [];
 	}
