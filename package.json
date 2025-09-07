@@ -15,6 +15,7 @@
 		"validate": "npm run validate-html && npm run test",
 		"validate-html": "html-validate docs/*.html",
 		"clean": "rm -rf docs/styles docs/scripts docs/index.html docs/robots.txt docs/sitemap.xml docs/site.webmanifest docs/favicon.ico docs/apple-touch-icon.png docs/favicon-32x32.png docs/icon-192.png docs/icon-512.png docs/icon-mask.png docs/icon.svg docs/favicon-html.txt docs/sw.js",
+		"svg:optimize": "node build/build-svg-optimizer.js",
 		"lint": "stylelint **/*.scss --fix && markdownlint *.md reference/*.md --fix",
 		"pretty": "prettier --write \"src/**/*.{js,scss}\" \"*.md\"",
 		"size": "echo 'Build Output Sizes:' && du -sh docs/* && echo '' && echo 'Main Files:' && wc -c docs/scripts/app.js docs/styles/main.css docs/index.html",
@@ -65,6 +66,7 @@
 		"stylelint": "^16.24.0",
 		"stylelint-config-standard-scss": "^15.0.1",
 		"stylelint-order": "^7.0.0",
+		"svgo": "^4.0.0",
 		"terser": "^5.44.0"
 	}
 }

@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
+const SVGOptimizer = require('./build-svg-optimizer');
 
 /**
  * Modern Favicon Generator with Sharp
@@ -19,6 +20,7 @@ class FaviconGenerator {
 	constructor() {
 		this.sourceDir = path.resolve('src/assets');
 		this.outputDir = path.resolve('docs');
+		this.svgOptimizer = new SVGOptimizer();
 
 		this.sizes = [
 			{ name: 'favicon-32x32.png', size: 32 },
@@ -176,7 +178,7 @@ class FaviconGenerator {
 			return;
 		}
 
-		console.log('\x1b[44m\x1b[37m BUILD \x1b[0m Processing SVG with theme support...');
+		console.log('\x1b[44m\x1b[37m BUILD \x1b[0m Processing SVG with optimization...');
 
 		let svgContent = fs.readFileSync(svgPath, 'utf8');
 
@@ -195,8 +197,24 @@ class FaviconGenerator {
 			svgContent = svgContent.replace(/(<svg[^>]*>)/, `$1${themeCSS}`);
 		}
 
-		fs.writeFileSync(path.join(this.outputDir, 'icon.svg'), svgContent);
-		console.log('  \x1b[42m\x1b[30m DONE \x1b[0m icon.svg (with theme switching)');
+		// Write temporary file with theme support
+		const tempPath = path.join(this.outputDir, 'icon-temp.svg');
+		fs.writeFileSync(tempPath, svgContent);
+
+		// Optimize the SVG
+		const outputPath = path.join(this.outputDir, 'icon.svg');
+		const result = this.svgOptimizer.optimizeFaviconSVG(tempPath, outputPath);
+
+		// Clean up temp file
+		if (fs.existsSync(tempPath)) {
+			fs.unlinkSync(tempPath);
+		}
+
+		if (result) {
+			console.log('  \x1b[42m\x1b[30m DONE \x1b[0m icon.svg (optimized with theme switching)');
+		} else {
+			console.log('  \x1b[43m\x1b[30m WARN \x1b[0m icon.svg (optimization failed, using original)');
+		}
 	}
 
 	createPlaceholderSVG() {
