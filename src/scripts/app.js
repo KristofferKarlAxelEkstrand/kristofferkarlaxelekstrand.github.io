@@ -91,3 +91,48 @@ window.addEventListener('beforeinstallprompt', (e) => {
 		}
 	}, 10000);
 });
+
+// Simple date-based notifications for preset days
+function showDateNotification() {
+	// Preset days - customize these (0 = Sunday, 1 = Monday, etc.)
+	const presetDays = [1, 3, 5]; // Monday, Wednesday, Friday
+	const messages = {
+		1: 'Happy Monday! Hope your week is off to a great start.',
+		3: "Midweek motivation! You're doing great.",
+		5: 'TGIF! Time to wrap up and enjoy the weekend.',
+	};
+
+	const today = new Date().getDay();
+
+	if (presetDays.includes(today) && messages[today]) {
+		// Check if notifications are supported and permitted
+		if ('Notification' in window) {
+			if (Notification.permission === 'granted') {
+				new Notification("Kristoffer's Portfolio", {
+					body: messages[today],
+					icon: '/fav/icon-192.png',
+					badge: '/fav/icon-192.png',
+				});
+			} else if (Notification.permission !== 'denied') {
+				// Ask for permission
+				Notification.requestPermission().then((permission) => {
+					if (permission === 'granted') {
+						new Notification("Kristoffer's Portfolio", {
+							body: messages[today],
+							icon: '/fav/icon-192.png',
+							badge: '/fav/icon-192.png',
+						});
+					}
+				});
+			}
+		}
+	}
+}
+
+// Show notification when page loads (only on preset days)
+document.addEventListener('DOMContentLoaded', function () {
+	// ... existing code ...
+
+	// Add date-based notification
+	showDateNotification();
+});
