@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const SVGOptimizer = require('./build-svg-optimizer');
+const { getFaviconPNGSettings } = require('./build-png-utils');
 
 /**
  * Modern Favicon Generator with Sharp
@@ -107,14 +108,7 @@ class FaviconGenerator {
 						fit: 'contain',
 						background: { r: 255, g: 255, b: 255, alpha: 0 },
 					})
-					.png({ 
-						quality: 95,           // Slightly lower quality for better compression
-						compressionLevel: 9,   // Maximum compression
-						progressive: process.env.PNG_PROGRESSIVE === 'true', // Configurable: false by default for max compression
-						palette: true,         // Use palette compression when beneficial
-						colours: 256,          // Limit colors for better compression
-						effort: 10            // Maximum optimization effort
-					})
+					.png(getFaviconPNGSettings(metadata))
 					.toFile(outputPath);
 
 				const stats = fs.statSync(outputPath);
@@ -166,14 +160,7 @@ class FaviconGenerator {
 					left: Math.round(padding),
 				},
 			])
-			.png({ 
-				quality: 95,
-				compressionLevel: 9,
-				progressive: process.env.PNG_PROGRESSIVE === 'true', // Configurable: false by default for max compression
-				palette: true,
-				colours: 256,
-				effort: 10
-			})
+			.png(getFaviconPNGSettings({ width: canvasSize, height: canvasSize, channels: 4 }))
 			.toFile(outputPath);
 
 		const stats = fs.statSync(outputPath);

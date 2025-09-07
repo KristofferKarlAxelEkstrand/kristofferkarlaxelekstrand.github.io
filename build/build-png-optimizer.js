@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
+const { getPaletteSettings } = require('./build-png-utils');
 
 /**
  * PNG Optimizer using Sharp
@@ -199,38 +200,7 @@ class PNGOptimizer {
 	 * @returns {Object} - { palette: boolean, colours: number }
 	 */
 	getPaletteSettings(strategy, hasAlpha, pixels) {
-		// Palette compression doesn't work well with transparency
-		const basePaletteEnabled = !hasAlpha;
-
-		switch (strategy) {
-			case 'aggressive':
-				// Aggressive: Use palette when possible, fewer colors for better compression
-				return {
-					palette: basePaletteEnabled,
-					colours: hasAlpha ? 256 : 128
-				};
-
-			case 'balanced':
-				// Balanced: Use palette when possible, standard color count
-				return {
-					palette: basePaletteEnabled,
-					colours: 256
-				};
-
-			case 'conservative':
-				// Conservative: Only use palette for very small images, standard colors
-				return {
-					palette: basePaletteEnabled && pixels < 10000,
-					colours: 256
-				};
-
-			default:
-				// Fallback to balanced settings
-				return {
-					palette: basePaletteEnabled,
-					colours: 256
-				};
-		}
+		return getPaletteSettings(strategy, hasAlpha, pixels);
 	}
 
 	showResults() {
