@@ -48,6 +48,7 @@ if (require.main === module) {
 		if (!run('Static files', 'node build/build-static.js')) process.exit(1);
 	} else {
 		// Full build - production mode
+		if (!run('PNG Optimize', 'node build/build-png-optimizer.js')) process.exit(1);
 		if (!run('CSS', 'npx sass src/styles:docs/styles --style=expanded --no-source-map && npx postcss docs/styles/main.css --replace --config postcss.config.js')) process.exit(1);
 		if (!run('JS', 'npx babel src/scripts --out-dir docs/scripts --presets=@babel/preset-env --config-file ./babel.config.js --quiet')) {
 			process.exit(1);

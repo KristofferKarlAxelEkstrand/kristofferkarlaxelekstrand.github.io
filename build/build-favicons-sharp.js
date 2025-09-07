@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const SVGOptimizer = require('./build-svg-optimizer');
+const { getFaviconPNGSettings } = require('./build-png-utils');
 
 /**
  * Modern Favicon Generator with Sharp
@@ -98,17 +99,21 @@ class FaviconGenerator {
 			const metadata = await image.metadata();
 			console.log(`  \x1b[43m\x1b[30m  SRC \x1b[0m Source: ${metadata.width}×${metadata.height} ${metadata.format.toUpperCase()}`);
 
-			// Generate standard sizes
+			// Generate standard sizes with optimized PNG settings
 			for (const { name, size } of this.sizes) {
+				const outputPath = path.join(this.outputDir, name);
+				
 				await image
 					.resize(size, size, {
 						fit: 'contain',
 						background: { r: 255, g: 255, b: 255, alpha: 0 },
 					})
-					.png({ quality: 100, compressionLevel: 9 })
-					.toFile(path.join(this.outputDir, name));
+					.png(getFaviconPNGSettings(metadata))
+					.toFile(outputPath);
 
-				console.log(`  \x1b[42m\x1b[30m DONE \x1b[0m ${name} (${size}×${size})`);
+				const stats = fs.statSync(outputPath);
+				const sizeKB = (stats.size / 1024).toFixed(1);
+				console.log(`  \x1b[42m\x1b[30m DONE \x1b[0m ${name} (${size}×${size}, ${sizeKB}KB)`);
 			}
 
 			// Generate special icons
@@ -155,10 +160,12 @@ class FaviconGenerator {
 					left: Math.round(padding),
 				},
 			])
-			.png({ quality: 100, compressionLevel: 9 })
+			.png(getFaviconPNGSettings({ width: canvasSize, height: canvasSize, channels: 4 }))
 			.toFile(outputPath);
 
-		console.log('  \x1b[42m\x1b[30m DONE \x1b[0m icon-mask.png (512×512 maskable)');
+		const stats = fs.statSync(outputPath);
+		const sizeKB = (stats.size / 1024).toFixed(1);
+		console.log(`  \x1b[42m\x1b[30m DONE \x1b[0m icon-mask.png (512×512 maskable, ${sizeKB}KB)`);
 	}
 
 	async createICOFile() {
