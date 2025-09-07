@@ -110,7 +110,7 @@ class FaviconGenerator {
 					.png({ 
 						quality: 95,           // Slightly lower quality for better compression
 						compressionLevel: 9,   // Maximum compression
-						progressive: false,    // Better for small icons
+						progressive: process.env.PNG_PROGRESSIVE === 'true', // Configurable: false by default for max compression
 						palette: true,         // Use palette compression when beneficial
 						colours: 256,          // Limit colors for better compression
 						effort: 10            // Maximum optimization effort
@@ -169,7 +169,7 @@ class FaviconGenerator {
 			.png({ 
 				quality: 95,
 				compressionLevel: 9,
-				progressive: false,
+				progressive: process.env.PNG_PROGRESSIVE === 'true', // Configurable: false by default for max compression
 				palette: true,
 				colours: 256,
 				effort: 10

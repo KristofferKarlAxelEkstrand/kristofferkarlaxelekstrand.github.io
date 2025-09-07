@@ -72,6 +72,7 @@ The core build orchestrator is `build/build-manager.js` which coordinates all bu
 - Optimizes PNG files using Sharp
 - Smart compression strategies based on file size
 - Preserves originals if optimization doesn't help
+- Configurable progressive encoding via `PNG_PROGRESSIVE=true` environment variable
 
 **`build/build-favicons-sharp.js`**
 
@@ -237,6 +238,7 @@ docs/
 - SVGO vector optimization
 - WebP format consideration
 - Responsive image sizing
+- Configurable progressive PNG encoding (disabled by default for maximum compression)
 
 ### HTML Optimizations
 
