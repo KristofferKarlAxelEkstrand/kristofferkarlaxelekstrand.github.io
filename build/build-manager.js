@@ -8,6 +8,14 @@ const path = require('path');
  * Enhanced Build Manager with Performance Monitoring
  */
 
+// Size budget configuration
+const SIZE_BUDGETS = {
+	'Total build output': 5 * 1024 * 1024, // 5MB
+	CSS: 100 * 1024, // 100KB
+	JS: 200 * 1024, // 200KB
+	HTML: 50 * 1024, // 50KB
+};
+
 // Build metrics storage
 const buildMetrics = {
 	startTime: Date.now(),
@@ -168,7 +176,7 @@ function saveBuildHistory(buildData) {
 			history = JSON.parse(fs.readFileSync(historyFile, 'utf8'));
 		}
 	} catch {
-		// Start with empty history if file is corrupted
+		// Start with empty history if file doesn't exist or contains invalid JSON
 		history = [];
 	}
 
@@ -188,12 +196,18 @@ function saveBuildHistory(buildData) {
 }
 
 /**
+ * Helper function to check if a step has valid size data
+ */
+function isValidSizeStep(step) {
+	return step.beforeSize > 0 && step.afterSize > 0;
+}
+
+/**
  * Generate build performance report
  */
 function generateBuildReport() {
 	const totalDuration = Date.now() - buildMetrics.startTime;
 	const successfulSteps = buildMetrics.steps.filter((s) => s.success);
-	const failedSteps = buildMetrics.steps.filter((s) => !s.success);
 
 	console.log('\n' + '='.repeat(60));
 	console.log('\x1b[46m\x1b[30m BUILD PERFORMANCE REPORT \x1b[0m');
@@ -240,10 +254,10 @@ function generateBuildReport() {
 	// Size budget analysis
 	const docsSize = getDirectorySize('docs');
 	const sizeBudgets = {
-		'Total build output': { size: docsSize, budget: 5 * 1024 * 1024 }, // 5MB
-		CSS: { size: getFileSize('docs/styles/main.css'), budget: 100 * 1024 }, // 100KB
-		JS: { size: getFileSize('docs/scripts/app.js'), budget: 200 * 1024 }, // 200KB
-		HTML: { size: getFileSize('docs/index.html'), budget: 50 * 1024 }, // 50KB
+		'Total build output': { size: docsSize, budget: SIZE_BUDGETS['Total build output'] },
+		CSS: { size: getFileSize('docs/styles/main.css'), budget: SIZE_BUDGETS.CSS },
+		JS: { size: getFileSize('docs/scripts/app.js'), budget: SIZE_BUDGETS.JS },
+		HTML: { size: getFileSize('docs/index.html'), budget: SIZE_BUDGETS.HTML },
 	};
 
 	console.log('\n\x1b[36mSize Budget Analysis:\x1b[0m');
@@ -266,7 +280,8 @@ function generateBuildReport() {
 	}
 
 	// Total compression achieved
-	const totalSaved = buildMetrics.steps.filter((s) => s.beforeSize > 0 && s.afterSize > 0).reduce((total, s) => total + (s.beforeSize - s.afterSize), 0);
+	const validSteps = buildMetrics.steps.filter(isValidSizeStep);
+	const totalSaved = validSteps.reduce((total, s) => total + (s.beforeSize - s.afterSize), 0);
 
 	if (totalSaved > 0) {
 		console.log(`\n\x1b[32mTotal Size Saved: ${formatBytes(totalSaved)}\x1b[0m`);
