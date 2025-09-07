@@ -1,5 +1,5 @@
 // Basic service worker for Kristoffer's portfolio PWA
-const CACHE_NAME = 'toffe-1757256805221-0a6670cd';
+const CACHE_NAME = 'toffe-1757257199148-71f62a02';
 const urlsToCache = ['/', '/index.html', '/scripts/app.js', '/styles/main.css', '/fav/site.webmanifest'];
 
 // Install event - cache the essential files

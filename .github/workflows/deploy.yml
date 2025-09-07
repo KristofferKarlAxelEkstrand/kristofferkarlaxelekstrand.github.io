@@ -38,7 +38,7 @@ jobs:
             - name: Build site
               run: |
                   npm run build
-                  cp static/* docs/
+                  cp -r static/* docs/
                   echo "Build complete. Contents of docs/:"
                   ls -la docs/
 
