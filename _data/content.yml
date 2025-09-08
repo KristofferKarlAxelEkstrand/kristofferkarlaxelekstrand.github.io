@@ -1,0 +1,16 @@
+# Content strings for the portfolio site
+preamble: "This page is mainly for me to remember and keep track of things. If you're looking for more info, head over to kristofferekstrand.se instead."
+
+what_i_do: "I'm a project manager who builds digital solutions and experiences - mainly focused on e-commerce, but also design, development, and other digital projects. Plus music technology stuff like the Adventure Kid Waveforms."
+
+work_proud_of: "As a frontend developer with a very skilled team at Vinoteket (Sweden's big online wine store), I redesigned and optimized the web for technical SEO, worked with tracking, optimized for web vitals, and removed all problems in the frontend code which both made it a better user experience but also affected SEO positively. My role primarily focused on frontend development, but I also contributed to brand identity work including logo updates and various other aspects of the digital experience."
+
+working_together: "I'm always up for interesting projects - whether it's e-commerce, web development, or anything music tech related. At Grand Public, I work with a creative branding agency and great developer team, so we can deliver something neat and impactful."
+
+projects_intro: "These are smaller projects or apps, or sometimes something entirely different. Many are web-related, but they can also involve sound or music design, technology, cooking, or a mix of everything. It's a space for just about anything."
+
+lab_sites_intro: "Side projects where I experiment with different technologies, music stuff, and web solutions. These are mostly for fun and learning new things."
+
+client_sites_intro: "E-commerce and web projects I've worked on in different roles - frontend development, UX design, visual design, and project management."
+
+experience_intro: "20+ years working with digital projects, frontend development, and user experience design across agencies and tech companies in Stockholm. I've worked on e-commerce solutions, managed teams, and built various web projects."

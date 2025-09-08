@@ -100,5 +100,6 @@
 		"wireframing",
 		"XCAP",
 		"YMYL"
-	]
+	],
+	"chat.agent.maxRequests": 1000
 }

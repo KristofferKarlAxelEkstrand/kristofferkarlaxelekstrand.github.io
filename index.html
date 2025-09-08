@@ -1,0 +1,109 @@
+---
+layout: default
+---
+
+<header>
+  <h1>{{ site.title }}</h1>
+  <p class="master-role">{{ site.description }}</p>
+</header>
+
+<hr>
+
+<main id="main">
+  <header>
+    <p class="preamble">{{ site.data.content.preamble }}</p>
+    <p><strong>What I do:</strong> {{ site.data.content.what_i_do }}</p>
+    <p><strong>Work I'm proud of:</strong> {{ site.data.content.work_proud_of }}</p>
+    <p>For more details, check out my main site at <a href="https://kristofferekstrand.se/" target="_blank" rel="noopener noreferrer">kristofferekstrand.se</a></p>
+    <p><strong>Interested in working together?</strong> {{ site.data.content.working_together }}</p>
+    <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </header>
+
+  <hr>
+
+  {% if site.projects.size > 0 %}
+  <section id="projects">
+    <h3>Projects</h3>
+    <p class="preamble">{{ site.data.content.projects_intro }}</p>
+    {% for project in site.projects %}
+    <article>
+      <h4>{{ project.title }}</h4>
+      {% if project.url %}
+      <p><a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.url_display }}</a></p>
+      {% endif %}
+      {{ project.content }}
+    </article>
+    {% endfor %}
+  </section>
+  <hr>
+  {% endif %}
+
+  {% if site.lab_sites.size > 0 %}
+  <section id="sites">
+    <h3>Personal Projects & Lab Sites</h3>
+    <p class="preamble">{{ site.data.content.lab_sites_intro }}</p>
+    {% for site_item in site.lab_sites %}
+    <article>
+      <h4>{{ site_item.title }}</h4>
+      {% if site_item.url %}
+      <p class="url"><a href="{{ site_item.url }}" target="_blank" rel="noopener noreferrer">{{ site_item.url_display }}</a></p>
+      {% endif %}
+      {{ site_item.content }}
+    </article>
+    {% endfor %}
+  </section>
+  <hr>
+  {% endif %}
+
+  {% if site.client_sites.size > 0 %}
+  <section id="client-sites">
+    <h3>Sites</h3>
+    <p class="preamble">{{ site.data.content.client_sites_intro }}</p>
+    {% for site_item in site.client_sites %}
+    <article>
+      <h4>{{ site_item.title }}</h4>
+      {% if site_item.role %}
+      <p class="role">{{ site_item.role }}</p>
+      {% endif %}
+      {% if site_item.url %}
+      <p class="url"><a href="{{ site_item.url }}" target="_blank" rel="noopener noreferrer">{{ site_item.url_display }}</a></p>
+      {% endif %}
+      {{ site_item.content }}
+    </article>
+    {% endfor %}
+  </section>
+  <hr>
+  {% endif %}
+
+  {% if site.workplaces.size > 0 %}
+  <section id="work">
+    <h3>Experience</h3>
+    <p class="preamble">{{ site.data.content.experience_intro }}</p>
+    {% assign sorted_workplaces = site.workplaces | sort: 'start_date' | reverse %}
+    {% for workplace in sorted_workplaces %}
+    <article>
+      <h4>{{ workplace.title }}</h4>
+      {% if workplace.role %}
+      <p class="role">{{ workplace.role }}</p>
+      {% endif %}
+      {% if workplace.url %}
+      <p><a href="{{ workplace.url }}" target="_blank" rel="noopener noreferrer">{{ workplace.url_display }}</a></p>
+      {% endif %}
+      {{ workplace.content }}
+      {% if workplace.start_date %}
+      <p>
+        <time datetime="{{ workplace.start_date }}">{{ workplace.start_date | date: "%B %Y" }}</time>
+        {% if workplace.end_date %} – <time datetime="{{ workplace.end_date }}">{{ workplace.end_date | date: "%B %Y" }}</time>{% else %} – Present{% endif %}
+      </p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </section>
+  {% endif %}
+</main>
+
+<hr>
+
+<footer>
+  <p><a href="https://kristofferekstrand.se/" target="_blank" rel="noopener noreferrer">Kristoffer Ekstrand</a></p>
+</footer>
