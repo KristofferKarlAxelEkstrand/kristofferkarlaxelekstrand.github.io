@@ -6,7 +6,7 @@ const STATIC_CACHE_URLS = [
   '/',
   '/about/',
   '{{ "/assets/css/main.css" | relative_url }}',
-  '/offline/'
+  '/offline.html'
 ];
 
 // Install event - cache static assets
@@ -62,7 +62,7 @@ self.addEventListener('fetch', event => {
           .catch(() => {
             // Return offline page for navigation requests
             if (event.request.mode === 'navigate') {
-              return caches.match('/offline/');
+              return caches.match('/offline.html');
             }
           });
       })
