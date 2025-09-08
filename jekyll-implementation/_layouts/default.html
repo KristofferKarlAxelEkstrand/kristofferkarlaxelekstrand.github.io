@@ -2,94 +2,93 @@
 ---
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en' }}">
-<head>
-  <meta charset="utf-8">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<title>
+			{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- SEO Tag Plugin -->
-  {% seo %}
+		<!-- SEO Tag Plugin -->
+		{% seo %}
 
-  <!-- Preload critical resources -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style">
+		<!-- Preload critical resources -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+		<link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></noscript>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></noscript>
 
-  <!-- Meta tags -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'">
-  <meta name="theme-color" content="#3c2252">
+		<!-- Meta tags -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'">
+		<meta name="theme-color" content="#3c2252">
 
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+		<!-- Favicons -->
+		<link rel="icon" href="/favicon.ico" sizes="32x32">
+		<link rel="icon" href="/icon.svg" type="image/svg+xml">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="manifest" href="/site.webmanifest">
 
-  <!-- PWA -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+		<!-- PWA -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-  <!-- Stylesheet -->
-  <link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
+		<!-- Stylesheet -->
+		<link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
 
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="_kDPKXBrvJDoPSfY686o4ZROEeQivHKaMiUBeFbKzGg">
+		<!-- Google Site Verification -->
+		<meta name="google-site-verification" content="_kDPKXBrvJDoPSfY686o4ZROEeQivHKaMiUBeFbKzGg">
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "{{ site.url }}/#website",
-          "url": "{{ site.url }}/",
-          "name": "{{ site.title }} Portfolio",
-          "description": "{{ site.description }}",
-          "publisher": {
-            "@id": "{{ site.url }}/#person"
-          },
-          "inLanguage": "{{ site.lang | default: 'en-US' }}"
-        },
-        {
-          "@type": "Person",
-          "@id": "{{ site.url }}/#person",
-          "name": "{{ site.author.name }}",
-          "alternateName": "{{ site.title }}",
-          "jobTitle": "Digital Project Manager",
-          "description": "{{ site.description }}",
-          "url": "{{ site.url }}/",
-          "email": "{{ site.email }}",
-          "sameAs": ["https://www.linkedin.com/in/kristofferekstrand/", "https://github.com/KristofferKarlAxelEkstrand"]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "{{ site.url }}/"
-            }
-          ]
-        }
-      ]
-    }
-  </script>
-</head>
-<body>
-  <!-- Skip to main content for accessibility -->
-  <a href="#main" class="skip-to-content">Skip to main content</a>
-  
-  {{ content }}
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebSite",
+						"@id": "{{ site.url }}/#website",
+						"url": "{{ site.url }}/",
+						"name": "{{ site.title }} Portfolio",
+						"description": "{{ site.description }}",
+						"publisher": {
+							"@id": "{{ site.url }}/#person"
+						},
+						"inLanguage": "{{ site.lang | default: 'en-US' }}"
+					}, {
+						"@type": "Person",
+						"@id": "{{ site.url }}/#person",
+						"name": "{{ site.author.name }}",
+						"alternateName": "{{ site.title }}",
+						"jobTitle": "Digital Project Manager",
+						"description": "{{ site.description }}",
+						"url": "{{ site.url }}/",
+						"email": "{{ site.email }}",
+						"sameAs": ["https://www.linkedin.com/in/kristofferekstrand/", "https://github.com/KristofferKarlAxelEkstrand"]
+					}, {
+						"@type": "BreadcrumbList",
+						"itemListElement": [
+							{
+								"@type": "ListItem",
+								"position": 1,
+								"name": "Home",
+								"item": "{{ site.url }}/"
+							}
+						]
+					}
+				]
+			}
+		</script>
+	</head>
+	<body>
+		<!-- Skip to main content for accessibility -->
+		<a href="#main" class="skip-to-content">Skip to main content</a>
 
-  <!-- Feed -->
-  {% feed_meta %}
-</body>
+		{{ content }}
+
+		<!-- Feed -->
+		{% feed_meta %}
+	</body>
 </html>

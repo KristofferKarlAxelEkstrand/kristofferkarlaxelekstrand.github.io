@@ -1,0 +1,92 @@
+# Jekyll Configuration for Kristoffer Ekstrand Portfolio
+title: "Kristoffer Ekstrand"
+email: "toffe@kristofferekstrand.se"
+description: "Digital Project Manager & Frontend Developer in Stockholm. 20+ years in digital products. Shopify, e-commerce, UX design, visual design & sound."
+baseurl: ""
+url: "https://kristofferkarlaxelekstrand.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO and metadata
+author:
+  name: "Kristoffer Karl Axel Ekstrand"
+  twitter: ""
+  
+# Site settings
+timezone: Europe/Stockholm
+locale: en_US
+lang: en
+
+# Collections Configuration
+collections:
+  workplaces:
+    output: true
+    permalink: /:collection/:name/
+    sort_by: start_date
+  projects:
+    output: true
+    permalink: /:collection/:name/
+  lab_sites:
+    output: true
+    permalink: /:collection/:name/
+  client_sites:
+    output: true
+    permalink: /:collection/:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "workplaces"
+    values:
+      layout: "workplace"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "lab_sites"
+    values:
+      layout: "site"
+  - scope:
+      path: ""
+      type: "client_sites"
+    values:
+      layout: "site"
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - build/
+  - src/
+  - test/
+  - coverage/
+  - reference/
+  - babel.config.js
+  - jest.config.js
+  - package.json
+  - postcss.config.js
+  - README.md
+
+# Include files that start with underscores
+include:
+  - _pages

@@ -1,269 +1,124 @@
-# Jekyll Migration for Kristoffer Ekstrand Portfolio
+# Kristoffer Ekstrand - Portfolio Site
 
-## Overview
+**Modern Jekyll-powered GitHub Pages portfolio with automated builds**
 
-This directory contains a complete Jekyll implementation that replaces the current custom build system while maintaining all functionality and improving content management.
+🌐 **Live Site:**
+[kristofferkarlaxelekstrand.github.io](https://kristofferkarlaxelekstrand.github.io/)
 
-## Why Jekyll?
+## ✨ **What This Is**
 
-### **Advantages**
-- **Native GitHub Pages Support** - No build scripts, GitHub handles everything
-- **Structured Content Management** - Collections for organized content types
-- **Markdown-Driven** - Easy editing with YAML front matter for metadata
-- **SEO & Performance** - Built-in optimizations and plugin ecosystem
-- **Simplified Maintenance** - No custom build system to maintain
+A professional portfolio showcasing 20+ years experience as Digital Project
+Manager, Frontend Developer, and Music Technology Specialist in Stockholm. Built
+with Jekyll for optimal GitHub Pages performance.
 
-### **What You Gain**
-- Individual pages for each work experience, project, and site
-- Easy content updates via Markdown files
-- Structured data via YAML front matter
-- Automatic sitemap and SEO optimization
-- Built-in RSS feed generation
-- Simplified deployment process
+## 🚀 **Quick Start**
 
-## Content Architecture
-
-### Collections Structure
-```
-_workplaces/     # Work experience entries
-_projects/       # Personal projects (AKWF, etc.)
-_lab_sites/      # Personal experimental sites
-_client_sites/   # Client work and sites
-```
-
-### Data Files
-```
-_data/
-  content.yml    # Site content strings and intro text
-```
-
-### Content Example
-Each piece of content is a Markdown file with YAML front matter:
-
-```yaml
----
-title: "Grand Public"
-role: "Digital Project Manager"
-url: "https://www.grandpublic.se/"
-start_date: "2025-08-01"
-categories: ["Project Management", "Digital Agency"]
----
-
-Content goes here in Markdown format...
-```
-
-## File Structure
-
-```
-_config.yml                 # Jekyll configuration
-Gemfile                     # Ruby dependencies
-index.html                  # Homepage template
-about.md                    # About page
-_layouts/
-  default.html              # Base layout
-  workplace.html            # Individual workplace pages
-  project.html              # Individual project pages
-  site.html                 # Individual site pages
-_data/
-  content.yml               # Site content strings
-_workplaces/               # Work experience collection
-  grand-public.md
-  panagora.md
-  vinoteket.md
-  # ... etc
-_projects/                 # Projects collection
-  akwf.md
-_lab_sites/               # Lab sites collection
-  adventure-kid.md
-  karl-axel.md
-  # ... etc
-_client_sites/            # Client sites collection
-  sjostrand-coffee.md
-  vinoteket.md
-  litium.md
-assets/css/
-  main.scss               # Sass styles (unchanged)
-```
-
-## Migration Process
-
-### 1. Backup Current Site
 ```bash
-git checkout -b jekyll-migration
-```
-
-### 2. Install Jekyll Dependencies
-```bash
-# Install Ruby and Bundler if not present
-gem install bundler
-
-# Copy Jekyll implementation files
-cp -r jekyll-implementation/* .
-
-# Install gems
+# Clone and setup
+git clone https://github.com/KristofferKarlAxelEkstrand/kristofferkarlaxelekstrand.github.io.git
+cd kristofferkarlaxelekstrand.github.io
 bundle install
-```
 
-### 3. Test Locally
-```bash
-# Serve locally
+# Start development
 bundle exec jekyll serve
-
-# Visit http://localhost:4000
+# → http://localhost:4000
 ```
 
-### 4. Configure GitHub Pages
-1. Go to repository Settings → Pages
-2. Set source to "Deploy from a branch"
-3. Select "main" branch and "/ (root)" folder
-4. GitHub will automatically detect Jekyll and build
+## 🎯 **Key Features**
 
-### 5. Update Domain (if needed)
-Add `CNAME` file with your domain if using custom domain.
+- **Jekyll Collections**: Structured content for workplaces, projects, lab sites
+- **GitHub Pages Native**: Zero-config deployment, automatic builds
+- **SEO Optimized**: 109 pages with meta tags, sitemaps, structured data
+- **Performance First**: Compressed HTML/CSS, 0.85s build times
+- **Responsive Design**: Dark theme with accessibility features
 
-## Content Management
+## 📝 **How to Customize**
 
-### Adding New Work Experience
-```bash
-# Create new file in _workplaces/
-vim _workplaces/new-company.md
-```
+### **1. Update Your Info**
 
 ```yaml
+# _config.yml
+title: 'Your Name'
+email: 'your@email.com'
+description: 'Your professional description'
+```
+
+### **2. Add Your Experience**
+
+```bash
+# Create new workplace
+_workplaces/your-company.md
+
+# Add projects
+_projects/your-project.md
+```
+
+### **3. Customize Design**
+
+```scss
+// assets/css/main.scss
+// Update colors, fonts, layout
+```
+
+## 🌐 **Deploy to GitHub Pages**
+
+1. **Fork this repository**
+2. **Update content** with your information
+3. **Push to main branch**
+4. **Enable GitHub Pages** in repository settings
+5. **Done!** Your site builds automatically
+
+## 📁 **Repository Structure**
+
+- **Jekyll Collections**: `_workplaces/`, `_projects/`, `_lab_sites/`,
+  `_client_sites/`
+- **Layouts & Components**: `_layouts/`, `_includes/`
+- **Assets**: `assets/css/`, `assets/images/`
+- **Legacy Build System**: `legacy-build/` (archived Node.js implementation)
+- **Documentation**: `docs-implementation/`, `reference/`
+
+📖 **Full structure guide:** [REPOSITORY-STRUCTURE.md](REPOSITORY-STRUCTURE.md)
+
+## 🛠️ **Development**
+
+```bash
+# Jekyll commands
+bundle exec jekyll serve    # Development server
+bundle exec jekyll build    # Production build
+
+# Content management
+# Edit files in _workplaces/, _projects/, etc.
+# Jekyll rebuilds automatically
+```
+
+## 🎉 **Template Benefits**
+
+**Performance:**
+
+- Static site generation (lightning fast)
+- Optimized CSS/HTML compression
+- GitHub Pages CDN delivery
+
+**SEO Excellence:**
+
+- Automatic sitemaps and RSS feeds
+- Meta tags and Open Graph
+- Structured data markup
+
+**Developer Experience:**
+
+- Hot reload development
+- Markdown content editing
+- Zero-config deployment
+
+## 📚 **Learn More**
+
+- [Jekyll Documentation](https://jekyllrb.com/docs/)
+- [GitHub Pages Guide](https://docs.github.com/en/pages)
+- [Repository Structure](REPOSITORY-STRUCTURE.md)
+- [Implementation Details](docs-implementation/)
+
 ---
-title: "Company Name"
-role: "Your Role"
-url: "https://company.com"
-start_date: "2025-01-01"
-end_date: "2026-01-01"  # or null for current
-categories: ["Category1", "Category2"]
----
 
-Description of the company and your work...
-```
-
-### Adding New Project
-```bash
-# Create new file in _projects/
-vim _projects/new-project.md
-```
-
-### Editing Content Strings
-Edit `_data/content.yml` to update intro text and section descriptions.
-
-## SEO & Performance Features
-
-- **Jekyll SEO Tag Plugin** - Automatic meta tags, Open Graph, Twitter Cards
-- **Automatic Sitemap** - Generated sitemap.xml
-- **RSS Feed** - Built-in feed generation
-- **Structured Data** - JSON-LD schema markup
-- **Asset Optimization** - Sass compilation and CSS minification
-
-## Deployment
-
-### Automatic (Recommended)
-1. Push to main branch
-2. GitHub automatically builds and deploys
-3. No GitHub Actions configuration needed
-
-### Manual Testing
-```bash
-# Build locally
-bundle exec jekyll build
-
-# Output goes to _site/
-```
-
-## Comparison with Current System
-
-| Feature | Current | Jekyll |
-|---------|---------|--------|
-| Build System | Custom Node.js | GitHub Pages (automatic) |
-| Content Management | HTML editing | Markdown + YAML |
-| Individual Pages | No | Yes (collections) |
-| SEO Optimization | Manual | Automatic (plugins) |
-| Content Structure | Single HTML file | Organized collections |
-| Maintenance | Custom scripts | Jekyll ecosystem |
-
-## Benefits for Content Updates
-
-### Before (Current System)
-1. Edit large HTML file
-2. Find correct section
-3. Manually update content
-4. Run build process
-5. Commit and push
-
-### After (Jekyll)
-1. Edit specific Markdown file
-2. Update YAML front matter if needed
-3. Commit and push
-4. GitHub automatically builds and deploys
-
-## Individual Page Examples
-
-Each collection item gets its own page:
-- `/workplaces/grand-public/` - Individual workplace page
-- `/projects/akwf/` - Individual project page
-- `/lab_sites/adventure-kid/` - Individual site page
-
-This enables:
-- Direct linking to specific experiences
-- Better SEO for individual projects
-- Organized content structure
-- Easy content management
-
-## Advanced Features
-
-### Custom Data
-Add custom data files in `_data/` for reusable content:
-
-```yaml
-# _data/skills.yml
-technical:
-  - JavaScript
-  - React
-  - Shopify
-management:
-  - Project Leadership
-  - Team Coordination
-```
-
-Use in templates:
-```liquid
-{% for skill in site.data.skills.technical %}
-  <li>{{ skill }}</li>
-{% endfor %}
-```
-
-### Custom Collections
-Add new content types in `_config.yml`:
-
-```yaml
-collections:
-  testimonials:
-    output: true
-    permalink: /:collection/:name/
-```
-
-## Migration Checklist
-
-- [ ] Copy Jekyll implementation files
-- [ ] Install Ruby and Bundle dependencies
-- [ ] Test locally with `bundle exec jekyll serve`
-- [ ] Verify all content renders correctly
-- [ ] Check individual collection pages
-- [ ] Test About page functionality
-- [ ] Configure GitHub Pages settings
-- [ ] Test production deployment
-- [ ] Update any external links if needed
-- [ ] Remove old build system files
-
-## Rollback Plan
-
-If needed, rollback is simple:
-```bash
-git checkout main  # Return to current system
-```
-
-The Jekyll implementation is completely separate and doesn't modify existing files until you're ready to switch.
+**Ready to build your professional portfolio? Fork this repository and make it
+yours!** 🚀

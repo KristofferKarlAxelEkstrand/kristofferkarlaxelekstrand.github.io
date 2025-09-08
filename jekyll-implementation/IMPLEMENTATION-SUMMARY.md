@@ -14,6 +14,7 @@ A complete Jekyll-based portfolio that:
 ## 🏗️ Architecture Highlights
 
 ### **Collections-Based Content**
+
 ```
 _workplaces/     # Work experience (9 entries)
 _projects/       # Personal projects (AKWF, etc.)
@@ -22,12 +23,15 @@ _client_sites/   # Client work (3 entries)
 ```
 
 ### **Data-Driven Text**
+
 - Site content strings in `_data/content.yml`
 - Easy to update introductory text
 - Consistent messaging across templates
 
 ### **Individual Pages**
+
 Every piece of content gets its own page:
+
 - `/workplaces/grand-public/` - Work experience details
 - `/projects/akwf/` - Adventure Kid Waveforms deep dive
 - `/about/` - Extended biography and skills
@@ -35,6 +39,7 @@ Every piece of content gets its own page:
 ## 🔧 Content Management Examples
 
 ### Before: Editing Experience
+
 ```html
 <!-- Edit large HTML file -->
 <article>
@@ -47,20 +52,21 @@ Every piece of content gets its own page:
 ```
 
 ### After: Editing Experience
+
 ```yaml
 ---
-title: "Grand Public"
-role: "Digital Project Manager"
-url: "https://www.grandpublic.se/"
-start_date: "2025-08-01"
+title: 'Grand Public'
+role: 'Digital Project Manager'
+url: 'https://www.grandpublic.se/'
+start_date: '2025-08-01'
 ---
-
 Grand Public is a creative brand agency...
 ```
 
 ## 📋 Implementation Details
 
 ### **Preserved Features**
+
 - Exact visual design and dark theme (#3c2252 background, #85ff85 accent)
 - All existing content and structure
 - Google Analytics integration ready
@@ -69,6 +75,7 @@ Grand Public is a creative brand agency...
 - Print styles for PDF generation
 
 ### **Enhanced Features**
+
 - Jekyll SEO Tag plugin for automatic meta tags
 - Individual collection item pages with clean URLs
 - RSS feed generation
@@ -76,6 +83,7 @@ Grand Public is a creative brand agency...
 - Better content organization and maintainability
 
 ### **GitHub Pages Integration**
+
 - No GitHub Actions needed - native Jekyll support
 - Automatic builds on every push to main
 - Same deployment workflow, simpler build process
@@ -83,18 +91,21 @@ Grand Public is a creative brand agency...
 ## 🚀 Migration Benefits
 
 ### **For Content Updates**
+
 - Edit specific Markdown files instead of large HTML
 - YAML front matter for structured metadata
 - Automatic page generation for new content
 - Version control friendly (smaller, focused changes)
 
 ### **For Maintenance**
+
 - No custom build system to maintain
 - Jekyll ecosystem handles optimization
 - GitHub Pages manages hosting and builds
 - Standard web development practices
 
 ### **For Growth**
+
 - Easy to add new content types (testimonials, blog posts)
 - Template system enables consistent design
 - Plugin ecosystem for additional features
@@ -104,7 +115,7 @@ Grand Public is a creative brand agency...
 
 ```
 ├── _config.yml              # Jekyll configuration
-├── Gemfile                   # Ruby dependencies  
+├── Gemfile                   # Ruby dependencies
 ├── index.html                # Homepage template
 ├── about.md                  # About page
 ├── _layouts/                 # Page templates
@@ -125,29 +136,34 @@ Grand Public is a creative brand agency...
 ## 🎨 Content Architecture
 
 ### **Adventure Kid Waveforms (AKWF)**
+
 - Featured project with dedicated page
 - Technical details and impact story
 - Links to adventurekid.se integration
 
 ### **Work Experience Timeline**
+
 - Chronological workplace entries
 - Role and company information
 - Date ranges with present/past indicators
 - Individual pages for detailed experience
 
 ### **Personal Projects**
+
 - Lab sites for experimentation
 - Music technology projects
 - Web development experiments
 
 ### **Professional Client Work**
+
 - Sjöstrand Coffee (Lead Frontend Developer)
-- Vinoteket (Frontend Developer & Art Director)  
+- Vinoteket (Frontend Developer & Art Director)
 - Litium (Art Director & UI Designer)
 
 ## 🔄 Deployment Process
 
 ### **Current (Complex)**
+
 1. Edit source files
 2. Run custom build scripts
 3. Process Sass, Babel, Terser
@@ -157,6 +173,7 @@ Grand Public is a creative brand agency...
 7. Push to GitHub
 
 ### **Jekyll (Simple)**
+
 1. Edit Markdown files
 2. Push to GitHub
 3. GitHub Pages automatically builds and deploys
@@ -164,6 +181,7 @@ Grand Public is a creative brand agency...
 ## 🎯 SEO & Performance
 
 ### **Built-in Optimizations**
+
 - Jekyll SEO Tag plugin handles meta tags
 - Automatic Open Graph and Twitter Cards
 - Structured data (JSON-LD) for search engines
@@ -171,6 +189,7 @@ Grand Public is a creative brand agency...
 - Optimized CSS compilation
 
 ### **Individual Page Benefits**
+
 - Each project/experience has unique URL
 - Specific meta descriptions and titles
 - Better internal linking structure
@@ -194,12 +213,14 @@ Auto-reload on file changes, same development experience but simpler.
 ## 📈 Future Capabilities
 
 ### **Easy Extensions**
+
 - Add blog functionality with `_posts/`
 - Create testimonials collection
 - Add project galleries with image collections
 - Implement tagging and categorization
 
 ### **Advanced Features**
+
 - Multi-language support with plugins
 - Search functionality
 - Comment systems integration
@@ -208,6 +229,7 @@ Auto-reload on file changes, same development experience but simpler.
 ## 🎯 Success Metrics
 
 This implementation delivers:
+
 - **90%+ build complexity reduction** - No custom scripts
 - **100% content preservation** - All existing content migrated
 - **Enhanced content management** - Markdown + YAML front matter
@@ -217,9 +239,12 @@ This implementation delivers:
 
 ## 🚀 Ready to Deploy
 
-The Jekyll implementation is complete and ready for production use. It maintains the exact visual design while providing a superior content management experience and simplified deployment process.
+The Jekyll implementation is complete and ready for production use. It maintains
+the exact visual design while providing a superior content management experience
+and simplified deployment process.
 
 Key files in `jekyll-implementation/` directory:
+
 - Complete Jekyll site structure
 - All content migrated to collections
 - Sass styles preserved
