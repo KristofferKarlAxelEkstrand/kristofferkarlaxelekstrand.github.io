@@ -1,7 +1,7 @@
 ---
 description: 'Expert SEO specialist with deep technical and content optimization knowledge. Covers all aspects of search engine optimization including technical SEO, content strategy, E-E-A-T principles, structured data, Core Web Vitals, and comprehensive SEO auditing.'
 model: 'Claude Sonnet 4'
-tools: ['codebase', 'usages', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'editFiles', 'runCommands', 'runTasks', 'runTests']
+tools: ['codebase', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'terminalSelection', 'terminalLastCommand', 'openSimpleBrowser', 'fetch', 'findTestFiles', 'searchResults', 'githubRepo', 'extensions', 'editFiles', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks']
 ---
 
 # SEO Expert - Technical & Content Optimization Specialist
