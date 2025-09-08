@@ -1,59 +1,63 @@
 {
-	"name": "Kristoffer Ekstrand Portfolio",
-	"short_name": "Kristoffer",
-	"description": "Digital Project Manager & Frontend Developer in Stockholm. 20+ years in digital products.",
-	"start_url": "/",
-	"display": "standalone",
-	"background_color": "#3c2252",
-	"theme_color": "#3c2252",
-	"orientation": "portrait-primary",
-	"scope": "/",
-	"icons": [
-		{
-			"src": "/assets/icon-192.png",
-			"type": "image/png",
-			"sizes": "192x192",
-			"purpose": "any"
-		},
-		{
-			"src": "/assets/icon-512.png",
-			"type": "image/png",
-			"sizes": "512x512",
-			"purpose": "any"
-		},
-		{
-			"src": "/assets/icon-mask.png",
-			"type": "image/png",
-			"sizes": "512x512",
-			"purpose": "maskable"
-		}
-	],
-	"categories": ["business", "productivity", "portfolio"],
-	"lang": "en",
-	"shortcuts": [
-		{
-			"name": "View Experience",
-			"short_name": "Experience",
-			"description": "View work experience and background",
-			"url": "/#work",
-			"icons": [
-				{
-					"src": "/assets/icon-192.png",
-					"sizes": "192x192"
-				}
-			]
-		},
-		{
-			"name": "View Projects",
-			"short_name": "Projects",
-			"description": "View personal projects and AKWF",
-			"url": "/#projects",
-			"icons": [
-				{
-					"src": "/assets/icon-192.png",
-					"sizes": "192x192"
-				}
-			]
-		}
-	]
+  "name": "Kristoffer Ekstrand Portfolio",
+  "short_name": "Kristoffer",
+  "description": "Digital Project Manager & Frontend Developer in Stockholm. 20+ years in digital products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3c2252",
+  "theme_color": "#3c2252",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-mask.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "portfolio"
+  ],
+  "lang": "en",
+  "shortcuts": [
+    {
+      "name": "View Experience",
+      "short_name": "Experience",
+      "description": "View work experience and background",
+      "url": "/#work",
+      "icons": [
+        {
+          "src": "/assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Projects",
+      "short_name": "Projects",
+      "description": "View personal projects and AKWF",
+      "url": "/#projects",
+      "icons": [
+        {
+          "src": "/assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }
