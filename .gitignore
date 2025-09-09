@@ -7,6 +7,11 @@
 /docs/*
 !/docs/.nojekyll
 
+# Ruby/Jekyll dependencies and build files
+vendor/
+.bundle/
+Gemfile.lock
+
 # OS-specific files
 .DS_Store
 Thumbs.db
