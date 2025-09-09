@@ -185,13 +185,42 @@ echo ""
 echo "6. Build Performance"
 echo "===================="
 
-# Test build time
+# Test build time with clean build
 echo -n "Testing build performance... "
 TESTS_TOTAL=$((TESTS_TOTAL + 1))
-BUILD_START=$(date +%s%N)
-bundle exec jekyll build --quiet > /dev/null 2>&1
-BUILD_END=$(date +%s%N)
-BUILD_TIME=$(( (BUILD_END - BUILD_START) / 1000000 ))
+
+# Ensure clean build by removing cache and site
+rm -rf _site .jekyll-cache .jekyll-metadata
+
+# Use more precise timing with better cross-platform compatibility
+if command -v gdate >/dev/null 2>&1; then
+    # macOS with GNU coreutils
+    BUILD_START=$(gdate +%s%3N)
+    bundle exec jekyll build --quiet > /dev/null 2>&1
+    BUILD_STATUS=$?
+    BUILD_END=$(gdate +%s%3N)
+    BUILD_TIME=$((BUILD_END - BUILD_START))
+elif date --version >/dev/null 2>&1; then
+    # GNU date (Linux)
+    BUILD_START=$(date +%s%3N)
+    bundle exec jekyll build --quiet > /dev/null 2>&1
+    BUILD_STATUS=$?
+    BUILD_END=$(date +%s%3N)
+    BUILD_TIME=$((BUILD_END - BUILD_START))
+else
+    # Fallback for systems without millisecond precision
+    BUILD_START=$(date +%s)
+    bundle exec jekyll build --quiet > /dev/null 2>&1
+    BUILD_STATUS=$?
+    BUILD_END=$(date +%s)
+    BUILD_TIME=$(( (BUILD_END - BUILD_START) * 1000 ))
+fi
+
+# Check if build was successful
+if [ $BUILD_STATUS -ne 0 ]; then
+    check_status "Build failed"
+    return 1
+fi
 
 if [ $BUILD_TIME -lt 5000 ]; then
     check_status "Build completed in ${BUILD_TIME}ms (excellent)"
